@@ -4,80 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>持之以 恒的博客</title>
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-    <div style="
-        background-color: #f1f1f1;
-        text-align: center;
-        padding: 40px;
-        ">
-        <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDgmFo8x-41TDNRqz7htHROoUMCbbrDAACRxsAAgm3mVcIZykXZo7OtzYE.jpg" alt="持之以 恒" widen="100px" height="100px">
-    </div>
-    <div style="
-        max-width: 700px;
-        margin: 30px auto;
-        padding: 15px;
-        line-height:1.7;
-        ">
-        <p>弄了好几天，累死我了，之后我会在博客上分享我的做题过程和经验总结</p>
-        <p>最开始接触CTF时，学的最多的就是Misc，各种编码与加密还有各种软件的使用等等</p>
-        <h3>CTF中的常用关键词</h3>
-        <p>"key", "password", "dasctf", "k3y", "p@ssword", "passw0rd",
-    "p@ssw0rd", "secret", "s3cret", "s3cr3t", "s3cre4","F14ggg",
-    "Ic4unq1U", "ISCC"</p>
-        <h3>各种文件头/尾</h3>
-        <p>zip 文件头：50 4B 03 04 14 00 08 00</p>
-        <p>rar 文件头：52 61 72 21 (Rar!)</p>
-        <p>7z  文件头：37 7A BC AF 27 1C</p>
-        <p>gz 文件头：1F 8B 08 00</p>
-        <p>png 文件头：89504E47 0D0A1A0A 0000000D 49484452   文件尾：00000000 49454E44 AE426082</p>
-        <p>jpg 文件头：FF D8 FF E0 00 10 4A 46 49 46 00 01</p>
-        <p>gif 文件头：47 49 46 38 39 61（GIF89A）或 47 49 46 38 37 61（GIF87A）    文件尾：00 3B</p>
-        <p>bmp 文件头：42 4D</p>
-        <p>psd 文件头：38 42 50 53</p>
-        <p>TIFF 文件头：49 49 2A 00</p>
-        <p>mp3 文件头：49 44 33 03 00 00 00 00</p>
-        <p>wav 文件头：57 41 56 45 或 52 49 46 46</p>
-        <p>mid 文件头：4D 54 68 64</p>
-        <p>avi 文件头：41 56 49 20</p>
-        <p>mov 文件头：00 00 00 20 66 74 79 70 71 74 20 20 20 05 03 00</p>
-        <p>swf 文件头：46 57 53 08 AC 43 00 00</p>
-        <p>pdf 文件头：25 50 44 46 2D 31 2E</p>
-        <p>doc 文件头：D0 CF 11 E0 A1 B1 1A E1</p>
-        <p>pyc 文件头：03 F3 0D 0A</p>
-        <p>MS-Office2003 文件头：D0 CF 11 E0</p>
-        <p>xml 文件头：3C 3F 78 6D 6C</p>
-        <p>html 文件头：68 74 6D 6C 3E</p>
-        <p>CAD (dwg)，文件头：41433130</p>
-        <p>Rich Text Format (rtf)，文件头：7B5C727466</p>
-        <p>Email [thorough only] (eml)，文件头：44656C69766572792D646174653A</p>
-        <p>Outlook Express (dbx)，文件头：CFAD12FEC5FD746F</p>
-        <p>Outlook (pst)，文件头：2142444E</p>
-        <p>MS Access (mdb)，文件头：5374616E64617264204A</p>
-        <p>WordPerfect (wpd)，文件头：FF575043</p>
-        <p>Postscript (eps.or.ps)，文件头：252150532D41646F6265</p>
-        <p>Quicken (qdf)，文件头：AC9EBD8F</p>
-        <p>Windows Password (pwl)，文件头：E3828596</p>
-        <p>Real Audio (ram)，文件头：2E7261FD</p>
-        <p>Real Media (rm)，文件头：2E524D46</p>
-        <p>MPEG (mpg)，文件头：000001BA 或 000001B3</p>
-        <p>Quicktime (mov)，文件头：6D6F6F76</p>
-        <p>Windows Media (asf)，文件头：3026B2758E66CF11</p>
-        <p>M4a，文件头：00000018667479704D3441</p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-    </div>
-     <div style="
-        background-color: #f1f1f1;
-        text-align: center;
-        padding: 40px;
-        font-size: 12px;
-        ">
+    <header class="site-header">
+        <div class="header-content">
+            <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDgmFo8x-41TDNRqz7htHROoUMCbbrDAACRxsAAgm3mVcIZykXZo7OtzYE.jpg" alt="持之以 恒" class="avatar">
+            <h1>持之以 恒的博客</h1>
+        </div>
+    </header>
+    
+    <main class="post-content">
+        <article>
+            <p class="intro">弄了好几天，累死我了，之后我会在博客上分享我的做题过程和经验总结</p>
+            <p>最开始接触CTF时，学的最多的就是Misc，各种编码与加密还有各种软件的使用等等</p>
+            
+            <h3>CTF中的常用关键词</h3>
+            <div class="code-block">
+                <pre>"key", "password", "dasctf", "k3y", "p@ssword", "passw0rd",
+"p@ssw0rd", "secret", "s3cret", "s3cr3t", "s3cre4","F14ggg",
+"Ic4unq1U", "ISCC"</pre>
+            </div>
+
+            <h3>各种文件头/尾</h3>
+            <div class="code-block">
+                <pre>zip 文件头：50 4B 03 04 14 00 08 00
+rar 文件头：52 61 72 21 (Rar!)
+7z  文件头：37 7A BC AF 27 1C
+gz 文件头：1F 8B 08 00
+png 文件头：89504E47 0D0A1A0A 0000000D 49484452   文件尾：00000000 49454E44 AE426082
+jpg 文件头：FF D8 FF E0 00 10 4A 46 49 46 00 01
+gif 文件头：47 49 46 38 39 61（GIF89A）或 47 49 46 38 37 61（GIF87A）    文件尾：00 3B
+bmp 文件头：42 4D
+psd 文件头：38 42 50 53
+TIFF 文件头：49 49 2A 00
+mp3 文件头：49 44 33 03 00 00 00 00
+wav 文件头：57 41 56 45 或 52 49 46 46
+mid 文件头：4D 54 68 64
+avi 文件头：41 56 49 20
+mov 文件头：00 00 00 20 66 74 79 70 71 74 20 20 20 05 03 00
+swf 文件头：46 57 53 08 AC 43 00 00
+pdf 文件头：25 50 44 46 2D 31 2E
+doc 文件头：D0 CF 11 E0 A1 B1 1A E1
+pyc 文件头：03 F3 0D 0A
+MS-Office2003 文件头：D0 CF 11 E0
+xml 文件头：3C 3F 78 6D 6C
+html 文件头：68 74 6D 6C 3E
+CAD (dwg)，文件头：41433130
+Rich Text Format (rtf)，文件头：7B5C727466
+Email [thorough only] (eml)，文件头：44656C69766572792D646174653A
+Outlook Express (dbx)，文件头：CFAD12FEC5FD746F
+Outlook (pst)，文件头：2142444E
+MS Access (mdb)，文件头：5374616E64617264204A
+WordPerfect (wpd)，文件头：FF575043
+Postscript (eps.or.ps)，文件头：252150532D41646F6265
+Quicken (qdf)，文件头：AC9EBD8F
+Windows Password (pwl)，文件头：E3828596
+Real Audio (ram)，文件头：2E7261FD
+Real Media (rm)，文件头：2E524D46
+MPEG (mpg)，文件头：000001BA 或 000001B3
+Quicktime (mov)，文件头：6D6F6F76
+Windows Media (asf)，文件头：3026B2758E66CF11
+M4a，文件头：00000018667479704D3441</pre>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
          <p>持之以 恒的博客</p>
-      </div>
+    </footer>
 </body>
 </html>
