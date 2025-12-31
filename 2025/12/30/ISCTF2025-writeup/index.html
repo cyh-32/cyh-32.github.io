@@ -128,58 +128,6 @@
     
   </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="" class="waves-effect waves-light">
-
-      
-      <i class="fas fa-list" style="zoom: 0.6;"></i>
-      
-      <span>Medias</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/musics">
-          
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>Musics</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/movies">
-          
-          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>Movies</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/books">
-          
-          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>Books</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/galleries">
-          
-          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>Galleries</span>
-        </a>
-      </li>
-      
-    </ul>
-    
-  </li>
-  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -280,61 +228,6 @@
 			
 			友情链接
 		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="javascript:;">
-			
-				<i class="fa-fw fas fa-list"></i>
-			
-			Medias
-			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-		</a>
-            <ul  style="background:  ;" >
-              
-                <li>
-
-                  <a href="/musics " style="margin-left:75px">
-				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
-			      
-		          <span>Musics</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a href="/movies " style="margin-left:75px">
-				  
-				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
-			      
-		          <span>Movies</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a href="/books " style="margin-left:75px">
-				  
-				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
-			      
-		          <span>Books</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a href="/galleries " style="margin-left:75px">
-				  
-				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
-			      
-		          <span>Galleries</span>
-                  </a>
-                </li>
-              
-            </ul>
           
         </li>
         
@@ -583,11 +476,6 @@
         
 
         
-        <!-- 代码块折行 -->
-        <style type="text/css">
-            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
-        </style>
-        
 
         <div class="card-content article-card-content">
             <div id="articleContent">
@@ -713,17 +601,17 @@
 <p>此时便思考能否通过斜体字来绕过</p>
 <p>构造<code>&#123;&#123; 𝑜𝑝𝑒𝑛("/flag").𝑟𝑒𝑎𝑑() &#125;&#125;</code><br>此时成功获得flag</p>
 <h2 id="who-am-I"><a href="#who-am-I" class="headerlink" title="who am I"></a>who am I</h2><p>首先注册个账号，然后登录，此时看到type&#x3D;1<br>通常admin设为0把值改掉，然后可以以管理员权限进去<br>可以看到几个重要文件此时关注dash<br>此时构造payload<br>GET &#x2F;operate?username&#x3D;app&amp;password&#x3D;jinja_loader.searchpath&amp;confirm_password&#x3D;[‘&#x2F;‘]<br>利用username和password来对渲染进行破坏</p>
-<h2 id="REVERSE–ezzz-math（Z3"><a href="#REVERSE–ezzz-math（Z3" class="headerlink" title="REVERSE–ezzz_math（Z3)"></a>REVERSE–ezzz_math（Z3)</h2><p>查壳-&gt;无壳-&gt;用IDA-&gt;打开main 函数<br>Flag23 个字符，异或 0xC 解密<br><img src="https://img.cdn1.vip/i/695407c452023_1767114692.webp"><br>进入sub_40100 函数（23 个线性方程组）<br><img src="https://img.cdn1.vip/i/6954084267712_1767114818.webp"><br><img src="https://img.cdn1.vip/i/69540879d4e84_1767114873.webp"></p>
-<h2 id="PWN—来签个到吧"><a href="#PWN—来签个到吧" class="headerlink" title="PWN—来签个到吧"></a>PWN—来签个到吧</h2><p>打开靶机-&gt;附件IDA 打开<br><img src="https://img.cdn1.vip/i/695408a2da5f7_1767114914.webp"></p>
+<h2 id="REVERSE–ezzz-math（Z3"><a href="#REVERSE–ezzz-math（Z3" class="headerlink" title="REVERSE–ezzz_math（Z3)"></a>REVERSE–ezzz_math（Z3)</h2><p>查壳-&gt;无壳-&gt;用IDA-&gt;打开main 函数<br>Flag23 个字符，异或 0xC 解密<br><img src="https://img.cdn1.vip/i/695407c452023_1767114692.webp" alt="hajimi"><br>进入sub_40100 函数（23 个线性方程组）<br><img src="https://img.cdn1.vip/i/6954084267712_1767114818.webp" alt="hajimi"><br><img src="https://img.cdn1.vip/i/69540879d4e84_1767114873.webp" alt="hajimi"></p>
+<h2 id="PWN—来签个到吧"><a href="#PWN—来签个到吧" class="headerlink" title="PWN—来签个到吧"></a>PWN—来签个到吧</h2><p>打开靶机-&gt;附件IDA 打开<br><img src="https://img.cdn1.vip/i/695408a2da5f7_1767114914.webp" alt="hajimi"></p>
 <ol>
 <li>构造 108 字节填充 + 返回地址 0xaddaaaaa</li>
 <li>发送 payload 触发溢出</li>
 <li>接收到”blueshark likes you too!”表示成功</li>
 <li>执行 cat flag 获取 flag</li>
 </ol>
-<p><img src="https://img.cdn1.vip/i/695408db8bfa6_1767114971.webp"></p>
+<p><img src="https://img.cdn1.vip/i/695408db8bfa6_1767114971.webp" alt="hajimi"></p>
 <h2 id="病毒分析"><a href="#病毒分析" class="headerlink" title="病毒分析"></a>病毒分析</h2><p>XOR 混淆（第二阶段）<br>解密第三阶段<br>UPX 压缩&#x2F;壳（第三阶段）<br>最终核心恶意代码  </p>
-<h3 id="1-海莲花"><a href="#1-海莲花" class="headerlink" title="1.海莲花"></a>1.海莲花</h3><p><img src="https://img.cdn1.vip/i/6954090ac60d1_1767115018.webp"></p>
+<h3 id="1-海莲花"><a href="#1-海莲花" class="headerlink" title="1.海莲花"></a>1.海莲花</h3><p><img src="https://img.cdn1.vip/i/6954090ac60d1_1767115018.webp" alt="hajimi"></p>
 <ol>
 <li><p>APT3（海莲花）最喜欢把 Drop 出来的 malware 放到 System32并伪装成系统组件（无扩展名或修改名）。</p>
 </li>
@@ -757,13 +645,13 @@
 <li><p>使用 UPX 官方工具（upx -l）可成功识别并解压。</p>
 </li>
 </ul>
-<h2 id="OSINT-2"><a href="#OSINT-2" class="headerlink" title="OSINT-2"></a>OSINT-2</h2><p><img src="https://img.cdn1.vip/i/6954097edb01b_1767115134.webp"><br>观察发现这座标志性大桥</p>
+<h2 id="OSINT-2"><a href="#OSINT-2" class="headerlink" title="OSINT-2"></a>OSINT-2</h2><p><img src="https://img.cdn1.vip/i/6954097edb01b_1767115134.webp" alt="hajimi"><br>观察发现这座标志性大桥</p>
 <p>通过Google搜索得知是曼哈顿大桥（Manhattan Bridge）</p>
-<p>在曼哈顿大桥和另外一座桥中间逛一逛<br><img src="https://img.cdn1.vip/i/695409a7dab72_1767115175.webp"><br><img src="https://img.cdn1.vip/i/69540a3cab6e8_1767115324.webp"><br>就可以发现原图了</p>
-<h2 id="OSINT-1"><a href="#OSINT-1" class="headerlink" title="OSINT-1"></a>OSINT-1</h2><p><img src="https://img.cdn1.vip/i/69540a7158123_1767115377.webp"><br>说实话第一题要比第二题难<br><img src="https://img.cdn1.vip/i/69540aa2d9821_1767115426.webp"><br>首先先看到这个图书馆，墙壁上的字推出在中国的某高校，结合出题人是福建理工大学的，先去看看理工的图书馆，发现不是，再去看理工旁边的大学，首先排除福师大，在福大发现目标</p>
+<p>在曼哈顿大桥和另外一座桥中间逛一逛<br><img src="https://img.cdn1.vip/i/695409a7dab72_1767115175.webp" alt="hajimi"><br><img src="https://img.cdn1.vip/i/69540a3cab6e8_1767115324.webp" alt="hajimi"><br>就可以发现原图了</p>
+<h2 id="OSINT-1"><a href="#OSINT-1" class="headerlink" title="OSINT-1"></a>OSINT-1</h2><p><img src="https://img.cdn1.vip/i/69540a7158123_1767115377.webp" alt="hajimi"><br>说实话第一题要比第二题难<br><img src="https://img.cdn1.vip/i/69540aa2d9821_1767115426.webp" alt="hajimi"><br>首先先看到这个图书馆，墙壁上的字推出在中国的某高校，结合出题人是福建理工大学的，先去看看理工的图书馆，发现不是，再去看理工旁边的大学，首先排除福师大，在福大发现目标</p>
 <p>只不过有点奇怪的是按照格子数的准确点不是答案，以至于需要把广场上的格子都点一遍</p>
 <h2 id="guess"><a href="#guess" class="headerlink" title="guess"></a>guess</h2><p>二分法</p>
-<h2 id="阿利维亚的传说"><a href="#阿利维亚的传说" class="headerlink" title="阿利维亚的传说"></a>阿利维亚的传说</h2><p><img src="https://img.cdn1.vip/i/69540abf63609_1767115455.png"></p>
+<h2 id="阿利维亚的传说"><a href="#阿利维亚的传说" class="headerlink" title="阿利维亚的传说"></a>阿利维亚的传说</h2><p><img src="https://img.cdn1.vip/i/69540abf63609_1767115455.png" alt="hajimi"></p>
 <p>首先打开WPS或者Word里显示隐藏文字的功能，有隐藏文字</p>
 <p>找到flag1</p>
 <p>再用foremost从图片中提取出一个zip压缩包，用Advanced Archive Password Recovery进行暴力破解，得到口令 : 8652，得到flag3</p>
@@ -772,7 +660,7 @@
 <p>R&#x3D;iytY</p>
 <p>U&#x3D;nGFo</p>
 <p>E&#x3D;diou</p>
-<p><img src="https://img.cdn1.vip/i/69540ae44d784_1767115492.webp"><br>用StegSolve打开图片，观察到图片中泰坦的三把钥匙颜色刚好对应red、green、blue，用LSB查看三个颜色数据，发现base64</p>
+<p><img src="https://img.cdn1.vip/i/69540ae44d784_1767115492.webp" alt="hajimi"><br>用StegSolve打开图片，观察到图片中泰坦的三把钥匙颜色刚好对应red、green、blue，用LSB查看三个颜色数据，发现base64</p>
 <p>解码后得到flag2：</p>
 <p>谕言2:</p>
 <p>W&#x3D;Hoeih</p>
@@ -791,9 +679,9 @@
 <p>首先看n.txt，发现是Brainfuck加密，用在线网站解得：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n=</span><br><span class="line"><span class="number">7644027341241571414254539033581025821232019860861753472899980529695625198016019462879314488666454640621660011189097660092595699889727595925351737140047609</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img.cdn1.vip/i/69540b120bf76_1767115538.webp"></p>
+<p><img src="https://img.cdn1.vip/i/69540b120bf76_1767115538.webp" alt="hajimi"></p>
 <p>然后看c.png，用Binwalk检测发现有两个png图片，提取出来另一个图片，但是没什么用，在010editor里查看原图数据，发现两个图片的尾部有东西，一个是base64</p>
-<p><img src="https://img.cdn1.vip/i/69540b3680a48_1767115574.png"><br>另一个是自定义 Base64 字表</p>
+<p><img src="https://img.cdn1.vip/i/69540b3680a48_1767115574.png" alt="hajimi"><br>另一个是自定义 Base64 字表</p>
 <p>CDABGHEFKLIJOPMNSTQRWXUVabYZefcdijghmnklqropuvstyzwx23016745 +&#x2F;89</p>
 <p>逐字符换回标准 Base64 后得到的标准串为：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dVEUmUQlJQSQCIZQcRVnWXSRETg5IXQ5hAMIRIFQVVQhFhkRCDlVEJF4J3hlaJISYkREQWAQBYMIgocJFwB5KHM0KSEEQEZxIDWSORc=</span><br></pre></td></tr></table></figure>
@@ -843,9 +731,9 @@
 <p>根据异或运算的性质 a &#x3D; c ^ b，我们可以反向计算出 a。</p>
 <p>解密结果为：<br>b’15ctf2025’</p>
 <p>这像是密码</p>
-<p><img src="https://img.cdn1.vip/i/69540b73ca263_1767115635.webp"></p>
+<p><img src="https://img.cdn1.vip/i/69540b73ca263_1767115635.webp" alt="hajimi"></p>
 <p>用010editor打开湖心亭.jpg，发现文件尾有多余的数据，是一个压缩包，但是文件头缺少了，补上50 4B 03 04，提取zip，用15ctf2025作为口令解压</p>
-<p><img src="https://img.cdn1.vip/i/69540b9592beb_1767115669.webp"><br>解压得到txt，发现有隐藏字符，结合题意，猜测是snow隐写，密码接着用15ctf2025，得到flag</p>
+<p><img src="https://img.cdn1.vip/i/69540b9592beb_1767115669.webp" alt="hajimi"><br>解压得到txt，发现有隐藏字符，结合题意，猜测是snow隐写，密码接着用15ctf2025，得到flag</p>
 <p>end  </p>
 
                 
@@ -1062,32 +950,6 @@
     
 
     
-
-    
-        <div class="disqus-card card" data-aos="fade-up">
-    <div id="disqus_thread" class="card-content">
-        <noscript>Please enable JavaScript to view the
-            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-    </div>
-</div>
-
-<script type="text/javascript">
-    disqus_config = function () {
-        this.page.url = 'http://cyh-32.github.io/2025/12/30/isctf2025-writeup/';
-        this.page.identifier = '/2025/12/30/isctf2025-writeup/';
-        this.page.title = 'ISCTF2025_writeup';
-    };
-    let disqus_shortname = '';
-
-    (function () { // DON'T EDIT BELOW THIS LINE
-        let d = document, s = d.createElement('script');
-        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
-        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
 
     
 
