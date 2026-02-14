@@ -429,9 +429,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/writeup/">
+                                <span class="chip bg-color">writeup</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -452,14 +456,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7.7k
+                    7.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    34 分
+                    33 分
                 </div>
                 
 
@@ -575,7 +579,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[+] Recovered 6 states</span><br><span class="line">[+] Recovered m: 9114611192019957857</span><br><span class="line">[+] Recovered a: 2371820993816156899</span><br><span class="line">[+] Recovered c: 2725942441002268621</span><br><span class="line">[+] Flag: b<span class="string">&#x27;SHCTF&#123;LLLLLLLLLLLLLLLCCCCCGGGGGGGGG_TGY%JgWOmAM6V5n55w3m*jcPJZjHO8E1VvzrGjT84tXS332D&amp;o4GZe8%KKzEyAngmwwx9bp5dv_O4dPpOvMy1^hM&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>Flag:</strong><br><code>SHCTF{LLLLLLLLLLLLLLLCCCCCGGGGGGGGG_TGY%JgWOmAM6V5n55w3m*jcPJZjHO8E1VvzrGjT84tXS332D&amp;o4GZe8%KKzEyAngmwwx9bp5dv_O4dPpOvMy1^hM}</code></p>
-<h2 id="evan"><a href="#evan" class="headerlink" title="evan"></a>evan</h2><p>题目给了一张png图片，用binwalk扫了一下发现有个zip文件。<br>![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-10 233510.png)<br>然后再用foremost提取了zip文件，发现需要密码。<br>在010editor里打开zip文件，发现有个文件叫flag.txt，猜测密码可能在这个文件里。<br>并且发现zip文件是伪加密的，数据区：504b030414000600，目录区：504b0102140014000900。<br>![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-10 234043.png)<br>所以可以直接把数据区和目录区的加密标志去掉，改成正常的zip文件。<br>修改后就可以直接解压了，flag.txt的内容就是flag。<br><em>flag:</em> <code>SHCTF{Evan_1s_s0_h4nds0me!}</code></p>
+<h2 id="evan"><a href="#evan" class="headerlink" title="evan"></a>evan</h2><p>题目给了一张png图片，用binwalk扫了一下发现有个zip文件。<br><img src="https://img.cdn1.vip/i/699078f3ba3a5_1771075827.png"><br>然后再用foremost提取了zip文件，发现需要密码。<br>在010editor里打开zip文件，发现有个文件叫flag.txt，猜测密码可能在这个文件里。<br>并且发现zip文件是伪加密的，数据区：504b030414000600，目录区：504b0102140014000900。<br><img src="https://img.cdn1.vip/i/69907921aae0f_1771075873.webp"><br>所以可以直接把数据区和目录区的加密标志去掉，改成正常的zip文件。<br>修改后就可以直接解压了，flag.txt的内容就是flag。<br><em>flag:</em> <code>SHCTF{Evan_1s_s0_h4nds0me!}</code></p>
 <h2 id="not-eight-length"><a href="#not-eight-length" class="headerlink" title="not_eight_length"></a>not_eight_length</h2><h3 id="题目分析-1"><a href="#题目分析-1" class="headerlink" title="题目分析"></a>题目分析</h3><p>题目提供了一个 Python 脚本 <code>task.py</code> 以及输出的参数 n, e, c。</p>
 <h4 id="1-加密逻辑分析"><a href="#1-加密逻辑分析" class="headerlink" title="1. 加密逻辑分析"></a>1. 加密逻辑分析</h4><p>查看 <code>task.py</code> 中的关键代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p = getPrime(<span class="number">512</span>)</span><br><span class="line">temp = nextprime(p)</span><br><span class="line">q = nextprime(temp)</span><br><span class="line">n = p * q</span><br></pre></td></tr></table></figure>
@@ -642,19 +646,19 @@
 
 <h3 id="Final-Flag"><a href="#Final-Flag" class="headerlink" title="Final Flag"></a>Final Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHCTF&#123;cl@ssic_c2ypto_also_crypt0&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="不止二维码"><a href="#不止二维码" class="headerlink" title="不止二维码"></a>不止二维码</h2><p>题目给了一个二维码图片，直接用QR-Resercher扫描，是一个假的flag，把图片拉到stegesolve里切换不同图层，发现还有三个二维码，用QR-Resercher扫描。<br>![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-03 213803.png)<br>![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-03 213835.png)<br>![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-03 213859.png)<br>得到以下内容：<br><code>FLAG_PART_1: SHCTF{55a23d24-</code><br><code>FLAG_PART_2: ABBB/AABBB/AAAAA/BBBBB/ABBBBA/BBBBA/B/AABBB/ABBB</code><br><code>FLAG_PART_3: MkZkbDg3ZlY3ZEQxalNGenQyZUFYT3E0NmRrTXFV</code>  </p>
+<h2 id="不止二维码"><a href="#不止二维码" class="headerlink" title="不止二维码"></a>不止二维码</h2><p>题目给了一个二维码图片，直接用QR-Resercher扫描，是一个假的flag，把图片拉到stegesolve里切换不同图层，发现还有三个二维码，用QR-Resercher扫描。<br><img src="https://img.cdn1.vip/i/6990794aa786c_1771075914.webp"><br><img src="https://img.cdn1.vip/i/6990796d4ccdf_1771075949.webp"><br><img src="https://img.cdn1.vip/i/699079da7efe3_1771076058.webp"><br>得到以下内容：<br><code>FLAG_PART_1: SHCTF{55a23d24-</code><br><code>FLAG_PART_2: ABBB/AABBB/AAAAA/BBBBB/ABBBBA/BBBBA/B/AABBB/ABBB</code><br><code>FLAG_PART_3: MkZkbDg3ZlY3ZEQxalNGenQyZUFYT3E0NmRrTXFV</code>  </p>
 <p>PART1是明文<br>PART2是莫斯电码，A代表划，B代表点，解码后得到：<code>b705-4e7b</code> (莫尔斯电码 B705-4E7B，<strong>统一转化为小写以匹配上下文</strong>)<br>PART3是Base混合多重解码:[ 解码4次 ] Base64 -&gt; Base62 -&gt; Base58 -&gt; Base32混合解码结果:<code>-942e-bdd}</code>  </p>
 <p><strong>flag:</strong> <code>SHCTF{55a23d24-b705-4e7b-942e-bdd}</code></p>
 <h2 id="滴答滴答"><a href="#滴答滴答" class="headerlink" title="滴答滴答"></a>滴答滴答</h2><p>题目给了一个音频文件，打开来听发现是SSTV（Slow Scan Television，慢扫描电视）信号。<br>安装虚拟声卡 Virtual Audio Cable，使用SSTV解码软件 MMSSTV 进行解码。  </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#使用步骤:</span></span><br><span class="line">1.点击Setup-Sound Control and Devices将默认输入设备和输出设备都设置为虚拟声卡line1</span><br><span class="line">2.用VLC播放音频（最好不要用Au播放）</span><br><span class="line">3.如果扫描出来的图片有错位，可以点击slant手动修改</span><br><span class="line">4.退出RX-SSTV前要注意把默认的输入/输出设备改回原来的参数</span><br></pre></td></tr></table></figure>
 
-<p>解码后得到一张图片，flag就在图片上。<br>![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-06 214517.png)<br><strong>flag:</strong> <code>SHCTF{Radio_is_just_too_much_fun!}</code></p>
-<h2 id="薇薇安的美照"><a href="#薇薇安的美照" class="headerlink" title="薇薇安的美照"></a>薇薇安的美照</h2><p>题目给了一张jpg照片，用010editor打开，发现文件尾有base64编码的字符串。<br>![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-11 191205.png)<br><strong>base64:</strong> <code>MV84Xzc0XzlwXzdfOTJfMTZfNV8xOF84Xzc=</code><br>解码后得到：<code>1_8_74_20_7_92_16_5_18_8_7</code>，这是一个数字序列。<br>结合题目所提的：学了一天<strong>化学</strong>的Zero，决定去打打绝区零里，flag格式：SHCTF{**}记得flag是大写的呢<br>将这些数字按照元素周期表的原子序数对应的元素符号，得到flag：<code>SHCTF{H_O_W_CA_N_U_S_B_AR_O_N}</code></p>
-<h2 id="提问前请先搜索"><a href="#提问前请先搜索" class="headerlink" title="提问前请先搜索"></a>提问前请先搜索</h2><p>认真阅读<br>![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-06 235856.png)<br><strong>flag:</strong> <code>SHCTF{dO_nOT_r3lY_0n_A1}</code></p>
+<p>解码后得到一张图片，flag就在图片上。<br><img src="https://img.cdn1.vip/i/69907b1b92869_1771076379.webp"><br><strong>flag:</strong> <code>SHCTF{Radio_is_just_too_much_fun!}</code></p>
+<h2 id="薇薇安的美照"><a href="#薇薇安的美照" class="headerlink" title="薇薇安的美照"></a>薇薇安的美照</h2><p>题目给了一张jpg照片，用010editor打开，发现文件尾有base64编码的字符串。<br><img src="https://img.cdn1.vip/i/69907b6984d43_1771076457.webp"><br><strong>base64:</strong> <code>MV84Xzc0XzlwXzdfOTJfMTZfNV8xOF84Xzc=</code><br>解码后得到：<code>1_8_74_20_7_92_16_5_18_8_7</code>，这是一个数字序列。<br>结合题目所提的：学了一天<strong>化学</strong>的Zero，决定去打打绝区零里，flag格式：SHCTF{**}记得flag是大写的呢<br>将这些数字按照元素周期表的原子序数对应的元素符号，得到flag：<code>SHCTF{H_O_W_CA_N_U_S_B_AR_O_N}</code></p>
+<h2 id="提问前请先搜索"><a href="#提问前请先搜索" class="headerlink" title="提问前请先搜索"></a>提问前请先搜索</h2><p>认真阅读<br><img src="https://img.cdn1.vip/i/69907bd0c7af1_1771076560.webp"><br><strong>flag:</strong> <code>SHCTF{dO_nOT_r3lY_0n_A1}</code></p>
 <h2 id="奇怪的数据"><a href="#奇怪的数据" class="headerlink" title="奇怪的数据"></a>奇怪的数据</h2><p>题目给了一个txt文件，观察后发现是图像的像素数据，且每个括号有三个数字，分别代表RGB三个通道的值。<br>将这些数据转换成图像，得到一张二维码图片。<br>解密脚本如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;flag.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    content = file.read()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除换行符，按分号分割数据</span></span><br><span class="line"><span class="comment"># 假设数据格式为 (r,g,b);(r,g,b);...</span></span><br><span class="line">data = []</span><br><span class="line">parts = content.replace(<span class="string">&#x27;\n&#x27;</span>, <span class="string">&#x27;&#x27;</span>).split(<span class="string">&#x27;;&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> part <span class="keyword">in</span> parts:</span><br><span class="line">    <span class="keyword">if</span> part.strip():</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            data.append(<span class="built_in">eval</span>(part.strip()))</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;解析错误: <span class="subst">&#123;part&#125;</span> - <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将列表转换为NumPy数组，形状为 (N, 3)</span></span><br><span class="line">data = np.array(data, dtype=np.uint8)</span><br><span class="line"></span><br><span class="line">data_length = <span class="built_in">len</span>(data)</span><br><span class="line">sqrt_length = <span class="built_in">int</span>(math.sqrt(data_length))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(sqrt_length, <span class="number">0</span>, -<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> data_length % i == <span class="number">0</span>:  <span class="comment"># 如果长度可以整除</span></span><br><span class="line">        rows = i</span><br><span class="line">        cols = data_length // i</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;尝试重塑为 <span class="subst">&#123;rows&#125;</span> 行, <span class="subst">&#123;cols&#125;</span> 列&quot;</span>)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            reshaped_data = data.reshape(rows, cols, <span class="number">3</span>)</span><br><span class="line">            image = Image.fromarray(reshaped_data, <span class="string">&#x27;RGB&#x27;</span>)</span><br><span class="line">            image.save(<span class="string">f&quot;<span class="subst">&#123;rows&#125;</span>x<span class="subst">&#123;cols&#125;</span>.png&quot;</span>)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;无法重塑为 <span class="subst">&#123;rows&#125;</span> 行, <span class="subst">&#123;cols&#125;</span> 列: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
 
-<p>运行脚本后，发现当重塑为 410 行, 410 列时，生成的图片是一个清晰的二维码。扫码得到base64：<code>U0hDVEZ7VGgzX1F1ZXN0MW9uNV9BcmVfVG9vX0QxZmZpY3UxdCEhISF9</code><br>![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-07 211534.png)<br>base64解码后得到flag：<code>SHCTF{Th3_Quest1on5_Are_Too_D1fficu1t!!!!}</code></p>
+<p>运行脚本后，发现当重塑为 410 行, 410 列时，生成的图片是一个清晰的二维码。扫码得到base64：<code>U0hDVEZ7VGgzX1F1ZXN0MW9uNV9BcmVfVG9vX0QxZmZpY3UxdCEhISF9</code><br><img src="https://img.cdn1.vip/i/69907c4756056_1771076679.webp"><br>base64解码后得到flag：<code>SHCTF{Th3_Quest1on5_Are_Too_D1fficu1t!!!!}</code></p>
 <h2 id="Office"><a href="#Office" class="headerlink" title="Office"></a>Office</h2><h3 id="题目分析-2"><a href="#题目分析-2" class="headerlink" title="题目分析"></a>题目分析</h3><p>题目提供了一个 <code>flag.docx</code> 文件。由于 Word 文档本质上是 ZIP 压缩格式，我们可以解压或直接查看其内部结构来寻找线索。</p>
 <h3 id="解题步骤-1"><a href="#解题步骤-1" class="headerlink" title="解题步骤"></a>解题步骤</h3><h4 id="1-探索文件结构"><a href="#1-探索文件结构" class="headerlink" title="1. 探索文件结构"></a>1. 探索文件结构</h4><p>查看 <code>flag.docx</code> 的内部文件，在 <code>word/theme/</code> 目录下发现了一个非标准文件 <code>alphabet</code>。</p>
 <p>读取 <code>word/theme/alphabet</code> 内容：</p>
@@ -776,11 +780,11 @@
 </li>
 <li><p><strong>运行 bkcrack 破解内部密钥</strong><br> 打开命令行（cmd&#x2F;PowerShell&#x2F;Terminal），进入bkcrack所在目录，执行类似下面命令：  </p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\bkcrack.exe -C <span class="string">&quot;SHCTF2026_资源平价!.zip&quot;</span> -c flag.exe -p plain_head.bin -o 0</span><br></pre></td></tr></table></figure>
-<p> 参数解释：<br> -C：加密的ZIP文件名（带路径也行）<br> -c：要攻击的加密文件在ZIP里的名字（这里是 flag.exe）<br> -p：你准备的已知明文文件（二进制格式）<br> -o 0：明文相对于文件开头的偏移（通常从0开始，因为PE头就是开头）<br> ![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-09 171903.png)<br> 密钥：<code>60101051</code> <code>4cba82cb</code> <code>48eac20c</code></p>
+<p> 参数解释：<br> -C：加密的ZIP文件名（带路径也行）<br> -c：要攻击的加密文件在ZIP里的名字（这里是 flag.exe）<br> -p：你准备的已知明文文件（二进制格式）<br> -o 0：明文相对于文件开头的偏移（通常从0开始，因为PE头就是开头）<br> <img src="https://img.cdn1.vip/i/69907c848fd29_1771076740.webp"><br> 密钥：<code>60101051</code> <code>4cba82cb</code> <code>48eac20c</code></p>
 </li>
 <li><p><strong>用恢复的密钥直接解密文件</strong><br> 找到密钥后，运行：  </p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\bkcrack.exe -C <span class="string">&quot;SHCTF2026_资源平价!.zip&quot;</span> -c flag.exe -k xxxx xxxx xxxx -d decrypted_flag.exe</span><br></pre></td></tr></table></figure>
-<p> -k 后面填刚才得到的3个密钥<br> -d 指定解密后输出的文件名<br> ![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-09 172239.png)<br> 解密出来的 decrypted_flag.exe 就是明文exe了！</p>
+<p> -k 后面填刚才得到的3个密钥<br> -d 指定解密后输出的文件名<br> <img src="https://img.cdn1.vip/i/69907c9e93d0a_1771076766.webp"><br> 解密出来的 decrypted_flag.exe 就是明文exe了！</p>
 </li>
 <li><p><strong>运行 decrypted_flag.exe 获取 Flag</strong><br> 双击运行 decrypted_flag.exe，或者在命令行中执行它，输出 Flag：  </p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hello and welcome,CTFer!</span><br><span class="line">The flag is: SHCTF&#123;002c158f-b4d2-4e14-bbbb-b5141bca8cb9&#125;</span><br></pre></td></tr></table></figure></li>
@@ -848,7 +852,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/writeup/">
+                                    <span class="chip bg-color">writeup</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1050,6 +1058,14 @@
                 </div>
 
                 
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/writeup/">
+                        <span class="chip bg-color">writeup</span>
+                    </a>
+                    
+                </div>
+                
             </div>
         </div>
         
@@ -1071,8 +1087,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            队伍名称：NISA_Shell_We_Dance?队伍排名：总榜：104 新生榜：18所属院校及赛道：福建师范大学 新生赛道  
-在写这篇 writeup 之前，首先感谢 ISCTF 2025 的出题人们设计了这样有趣且富有挑战性的题目，也
+                            
                         
                     </div>
                     <div class="publish-info">
@@ -1086,6 +1101,14 @@
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/writeup/">
+                        <span class="chip bg-color">writeup</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1293,7 +1316,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">18.2k</span>&nbsp;字
+                class="white-color">18.1k</span>&nbsp;字
             
             
             
