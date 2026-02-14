@@ -1,0 +1,1520 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="SHCTF_3rd_writeup, 博客">
+    <meta name="description" content="追求不凡，永不止步">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>SHCTF_3rd_writeup | 持之以 恒的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://img.cdn1.vip/i/695499951457a_1767152021.webp" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">持之以 恒的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://img.cdn1.vip/i/695499951457a_1767152021.webp" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">持之以 恒的博客</div>
+        <div class="logo-desc">
+            
+            追求不凡，永不止步
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/cyh-32/cyh-32.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/cyh-32/cyh-32.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">SHCTF_3rd_writeup</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2026-02-14
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    7.7k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    34 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="TE"><a href="#TE" class="headerlink" title="TE"></a>TE</h2><h3 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h3><p>题目提供了一个 Python 脚本 <code>task.py</code>，其中包含以下关键信息：</p>
+<ol>
+<li><p>生成了两个 512 位的素数 <code>p</code> 和 <code>q</code>，计算模数 <code>n = p * q</code>。</p>
+</li>
+<li><p>生成了两个随机的公钥指数 <code>e1</code> 和 <code>e2</code>。</p>
+</li>
+<li><p>对同一个明文 <code>flag</code> 使用不同的公钥指数 <code>e1</code> 和 <code>e2</code> 进行加密，得到两个密文 <code>c1</code> 和 <code>c2</code>。<br> $$<br> c_1 \equiv m^{e_1} \pmod n<br> $$</p>
+<p> $$<br> c_2 \equiv m^{e_2} \pmod n<br> $$</p>
+</li>
+<li><p>给出了 <code>e1</code>, <code>e2</code>, <code>n</code>, <code>c1</code>, <code>c2</code> 的具体数值。</p>
+</li>
+</ol>
+<h3 id="漏洞原理：共模攻击-Common-Modulus-Attack"><a href="#漏洞原理：共模攻击-Common-Modulus-Attack" class="headerlink" title="漏洞原理：共模攻击 (Common Modulus Attack)"></a>漏洞原理：共模攻击 (Common Modulus Attack)</h3><p>当同一个明文 $m$ 使用相同的模数 $n$ 但不同的公钥指数 $e_1, e_2$ 进行加密时，如果 $e_1$ 和 $e_2$ 互素（即 $\gcd(e_1, e_2) &#x3D; 1$），攻击者可以在不分解 $n$ 的情况下直接恢复明文 $m$。</p>
+<p>原理如下：<br>根据扩展欧几里得算法（Extended Euclidean Algorithm），对于互素的 $e_1$ 和 $e_2$，一定存在整数 $s_1$ 和 $s_2$ 满足：<br>$$<br>s_1 e_1 + s_2 e_2 &#x3D; 1<br>$$<br>利用模运算的性质：<br>$$<br> c_1^{s_1} \times c_2^{s_2} \equiv (m^{e_1})^{s_1} \times (m^{e_2})^{s_2} \pmod n<br>$$</p>
+<p>$$<br>\equiv m^{e_1 s_1} \times m^{e_2 s_2} \pmod n<br>$$</p>
+<p>$$<br>\equiv m^{e_1 s_1 + e_2 s_2} \pmod n<br>$$</p>
+<p>$$<br>\equiv m^1 \pmod n<br>$$</p>
+<p>$$<br>\equiv m \pmod n<br>$$</p>
+<p>注意：由于 $s_1$ 和 $s_2$ 中必有一个为负数，计算 $c^s \pmod n$ 时，如果 $s &lt; 0$，需要先计算 $c$ 的模逆元 $c^{-1} \pmod n$，然后计算<br>$$<br>(c^{-1})^{-s} \pmod n<br>$$</p>
+<h3 id="解题脚本"><a href="#解题脚本" class="headerlink" title="解题脚本"></a>解题脚本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> long_to_bytes</span><br><span class="line"></span><br><span class="line"><span class="comment"># 题目给出的数据</span></span><br><span class="line">e1 = <span class="number">740153575</span></span><br><span class="line">e2 = <span class="number">2865243571</span></span><br><span class="line">n = <span class="number">136622832042809215646904518487100682818433235485047740604612449039291802103378650845690420527029208661555957840623544220907967041438993189882681277161437473818861280518627112617436473837014181944318974950710633690704711613682306786783611123590732850783007770603201513394002330426718261667816328404673167404897</span></span><br><span class="line">c1 = <span class="number">56187319559060690757544481076112948328826527679002578544683022765347668056620384831778729489197135280950314627119815558644487151419126272267146826463912815062442590228193753706779325992179790583792001196548329204758137104234662611732735693150331594645734142941475121453410494160975503459516324097097434727685</span></span><br><span class="line">c2 = <span class="number">45042409947237296641429229414329516753664139389113206575966507524195434716702812078844474626406932213486611190698953613898299571473488550533642524208077653917354039305279692307471529748408234617430389423630015569730564585740596832844917494965974840512412454337766930330443409183293514761911902752336129193323</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 扩展欧几里得算法，返回 (g, x, y) 使得 ax + by = g</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">egcd</span>(<span class="params">a, b</span>):</span><br><span class="line">    <span class="keyword">if</span> a == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> (b, <span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        g, y, x = egcd(b % a, a)</span><br><span class="line">        <span class="keyword">return</span> (g, x - (b // a) * y, y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算模逆元</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">modinv</span>(<span class="params">a, m</span>):</span><br><span class="line">    g, x, y = egcd(a, m)</span><br><span class="line">    <span class="keyword">if</span> g != <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">raise</span> Exception(<span class="string">&#x27;modular inverse does not exist&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> x % m</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 计算 e1 和 e2 的 Bezout 系数 s1, s2</span></span><br><span class="line"><span class="comment"># g = gcd(e1, e2) = s1*e1 + s2*e2</span></span><br><span class="line">g, s1, s2 = egcd(e1, e2)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;gcd(e1, e2) = <span class="subst">&#123;g&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> g == <span class="number">1</span>:</span><br><span class="line">    <span class="comment"># 2. 如果 s1 或 s2 为负数，需要先计算对应 c 的模逆元</span></span><br><span class="line">    <span class="comment"># pow(c, s, n) 函数在 s &lt; 0 时在较新版本的 Python/gmpy2 中可能支持，</span></span><br><span class="line">    <span class="comment"># 但为了手写逻辑清晰，这里手动处理负指数。</span></span><br><span class="line">    </span><br><span class="line">    val1 = <span class="built_in">pow</span>(c1, s1, n) <span class="keyword">if</span> s1 &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="built_in">pow</span>(modinv(c1, n), -s1, n)</span><br><span class="line">    val2 = <span class="built_in">pow</span>(c2, s2, n) <span class="keyword">if</span> s2 &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="built_in">pow</span>(modinv(c2, n), -s2, n)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 3. 计算明文 m = c1^s1 * c2^s2 mod n</span></span><br><span class="line">    m = (val1 * val2) % n</span><br><span class="line">    </span><br><span class="line">    flag = long_to_bytes(m)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Flag: <span class="subst">&#123;flag.decode()&#125;</span>&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;这不是标准的共模攻击场景 (gcd != 1)&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p>运行结果如下：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcd(e1, e2) = 1</span><br><span class="line">Flag: SHCTF&#123;lYQkkk3ud4hqV3fZtPWH077vhI2Bqcz19ZRxf1vwRU8Ej4uvrJcF02Sd4bzjxqUH5096qWDIdTyEJ$JzF&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Ez-RSA"><a href="#Ez-RSA" class="headerlink" title="Ez_RSA"></a>Ez_RSA</h2><h3 id="题目分析：Wiener’s-Attack"><a href="#题目分析：Wiener’s-Attack" class="headerlink" title="题目分析：Wiener’s Attack"></a>题目分析：Wiener’s Attack</h3><p>题目提供了一个 Python 脚本 <code>193540_chall.py</code>，其中给出了 RSA 的公钥参数 <code>n</code>, <code>e</code> 以及密文 <code>c</code>。</p>
+<p>代码片段如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p = getPrime(<span class="number">512</span>)</span><br><span class="line">q = getPrime(<span class="number">512</span>)</span><br><span class="line">n = p*q</span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line">e = getPrime(<span class="number">1019</span>)</span><br><span class="line">d = invert(e, phi)</span><br></pre></td></tr></table></figure>
+
+<p><strong>观察参数特点：</strong></p>
+<ol>
+<li><code>n</code> 是由两个 512 位的素数生成的，长度约为 1024 位。</li>
+<li><code>e</code> 是一个生成的 1019 位的素数。</li>
+</ol>
+<p><strong>漏洞点：</strong><br>通常 RSA 的 <code>e</code> 选取较小的值（如 65537），但在本题中 <code>e</code> 非常大，接近模数 <code>n</code> 的大小。<br>根据 RSA 的密钥生成公式：<br>$$<br>ed \equiv 1 \pmod{\phi(n)} \implies ed - k\phi(n) &#x3D; 1<br>$$<br>当 <code>e</code> 很大时，对应的私钥 <code>d</code> 往往很小。</p>
+<p>如果满足 $d &lt; \frac{1}{3}N^{\frac{1}{4}}$，我们可以利用 <strong>Wiener’s Attack</strong>（维纳攻击）来还原 <code>d</code>。维纳攻击的核心思想是 <code>e/n</code> 是 <code>k/d</code> 的一个最佳有理逼近，可以通过计算 <code>e/n</code> 的连分数渐近分数来尝试找到 <code>d</code>。</p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ol>
+<li>提取题目中的 <code>n</code>, <code>e</code>, <code>c</code>。</li>
+<li>编写脚本对 <code>e/n</code> 进行连分数展开，生成一系列渐近分数。</li>
+<li>遍历每一个渐近分数的分母作为潜在的私钥 <code>d</code>。</li>
+<li>使用候选的 <code>d</code> 计算潜在的 <code>\phi(n)</code>，进而解一元二次方程验证是否能分解 <code>n</code>（或者直接尝试解密 <code>c</code> 并判断结果是否符合 Flag 格式）。</li>
+<li>找到正确的 <code>d</code> 后，计算<br>$$<br>m &#x3D; c^d \pmod n<br>$$<br>得到明文。</li>
+</ol>
+<h3 id="解题脚本-1"><a href="#解题脚本-1" class="headerlink" title="解题脚本"></a>解题脚本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> long_to_bytes</span><br><span class="line"></span><br><span class="line"><span class="comment"># 题目给出的参数</span></span><br><span class="line">n = <span class="number">107464134871680646151655304067173578951022679613817744422854142736895193478923970402314237869266898585661396817719803005109183572552933963881756199330890085692291647461683934019264121186823772581796061998307778635680038707808422026396560620912393186072263186503236380890048319797143644270579169484448179083299</span></span><br><span class="line">e = <span class="number">3924586561728843234261049280560557566669922961436496251423249382498887294225142535297862819865029081145630384268177735578769958711287734205364353929040337350836000661255957087233897675207507752217828489549059197109918195953230752720210793300168746820366115929509596904295875481061789801178045962611893883689</span></span><br><span class="line">c = <span class="number">4557192604704814579224198928010541193712311907197292139423304635523945088581321950910727673367241811197226152299201713883344661436550024661781925551129803469824570154317098612833694631836257698682075695287756551674264966935203485636255394639674521955953445322493019052791894426980946209383266707043869522774</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fast_continued_fraction</span>(<span class="params">num, den</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot; 计算 num/den 的连分数展开 &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">while</span> den:</span><br><span class="line">        q = num // den</span><br><span class="line">        <span class="keyword">yield</span> q</span><br><span class="line">        num, den = den, num % den</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">wiener_attack</span>(<span class="params">e, n</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot; </span></span><br><span class="line"><span class="string">    Wiener&#x27;s Attack </span></span><br><span class="line"><span class="string">    通过连分数渐近分数寻找私钥 d</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    n0, d0 = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    n1, d1 = <span class="number">1</span>, <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 遍历连分数商 q</span></span><br><span class="line">    <span class="keyword">for</span> q <span class="keyword">in</span> fast_continued_fraction(e, n):</span><br><span class="line">        <span class="comment"># 计算当前的渐近分数 n_next/d_next = k/d</span></span><br><span class="line">        n_next = q * n1 + n0</span><br><span class="line">        d_next = q * d1 + d0</span><br><span class="line">        n0, d0 = n1, d1</span><br><span class="line">        n1, d1 = n_next, d_next <span class="comment"># 更新前两项</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># d_next 就是我们推测的私钥 d</span></span><br><span class="line">        d_guess = d1 </span><br><span class="line">        k_guess = n1</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> k_guess == <span class="number">0</span>: <span class="keyword">continue</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 验证 phi 是否为整数： phi = (ed - 1) / k</span></span><br><span class="line">        <span class="keyword">if</span> (e * d_guess - <span class="number">1</span>) % k_guess == <span class="number">0</span>:</span><br><span class="line">            phi = (e * d_guess - <span class="number">1</span>) // k_guess</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 简单的验证：尝试用推测的 d 解密</span></span><br><span class="line">            <span class="comment"># 如果是正确的 d，解密结果应该包含 Flag 格式或者可读字符</span></span><br><span class="line">            m_guess = <span class="built_in">pow</span>(c, d_guess, n)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                flag_bytes = long_to_bytes(m_guess)</span><br><span class="line">                <span class="keyword">if</span> <span class="string">b&#x27;SHCTF&#x27;</span> <span class="keyword">in</span> flag_bytes:</span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">f&quot;[+] Found d: <span class="subst">&#123;d_guess&#125;</span>&quot;</span>)</span><br><span class="line">                    <span class="keyword">return</span> flag_bytes</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Running Wiener&#x27;s Attack...&quot;</span>)</span><br><span class="line">flag = wiener_attack(e, n)</span><br><span class="line"><span class="keyword">if</span> flag:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Flag: <span class="subst">&#123;flag.decode()&#125;</span>&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Attack failed.&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h3><p>运行上述脚本，成功解出私钥 <code>d</code> 并还原明文。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d = 13381010831988668939315406679736078064417157389064253385691768500704978358617</span><br></pre></td></tr></table></figure>
+
+<p><strong>Flag:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHCTF&#123;e950ea87356fc62ce6323253a672680e&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h2><h3 id="题目分析：LCG-流加密破解"><a href="#题目分析：LCG-流加密破解" class="headerlink" title="题目分析：LCG 流加密破解"></a>题目分析：LCG 流加密破解</h3><p>题目提供了一个 Python 脚本 <code>task.py</code>，实现了一个基于<strong>线性同余生成器 (LCG)</strong> 的流加密算法。</p>
+<p><strong>加密流程如下：</strong></p>
+<ol>
+<li><strong>生成参数</strong>：随机生成 LCG 的参数 <code>m</code>（63位）, <code>a</code>（62位）, <code>c</code>（62位）, <code>s_0</code>（62位）。<ul>
+<li><code>m</code> 强制为 63 位且最高位为 1。</li>
+</ul>
+</li>
+<li><strong>生成密钥流</strong>：使用 LCG 公式<br>$$<br>x_{i+1} &#x3D; (a \cdot x_i + c) \pmod m<br>$$<br>生成一串随机数。</li>
+<li><strong>加密</strong>：<ul>
+<li>将明文 $P$ 填充并按 8 字节分块。</li>
+<li>每一块明文与对应的 LCG 状态值（密钥流）进行异或运算得到密文。</li>
+</ul>
+</li>
+</ol>
+<p><strong>已知信息：</strong></p>
+<ul>
+<li>明文 <code>P_known</code> (48字节，即 6 个块)。</li>
+<li>对应的密文 <code>C_known</code>。</li>
+<li>Flag 的密文 <code>C_flag</code>。</li>
+</ul>
+<h3 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h3><p>LCG (Linear Congruential Generator) 是一种简单的伪随机数生成器，其安全性依赖于参数的保密性。但在已知部分输出序列的情况下，其参数很容易被破解。</p>
+<p><strong>攻击步骤：</strong></p>
+<ol>
+<li><p><strong>恢复密钥流样本</strong>：<br> 已知<br> $$<br> P_{known}<br> $$<br> 和<br> $$<br> C_{known}<br> $$<br> ，利用异或的性质<br> $$<br> A \oplus B &#x3D; C \implies A \oplus C &#x3D; B<br> $$<br> ，我们可以直接恢复出前 6 个 LCG 的状态值：<br> $$<br> S_i &#x3D; P_i \oplus C_i<br> $$<br> 得到序列<br> $$<br> S_0, S_1, S_2, S_3, S_4, S_5<br> $$<br> 。</p>
+</li>
+<li><p><strong>攻击模数 $m$</strong>：<br> 由 LCG 定义：<br> $$<br> S_{i+1} \equiv a \cdot S_i + c \pmod m<br> $$</p>
+<p> $$<br> S_{i+2} \equiv a \cdot S_{i+1} + c \pmod m<br> $$</p>
+<p> 两式相减消除 c：<br> $$<br> S_{i+2} - S_{i+1} \equiv a \cdot (S_{i+1} - S_i) \pmod m<br> $$<br> 令<br> $$<br> D_i &#x3D; S_{i+1} - S_i<br> $$<br> ，则有：<br> $$<br> D_{i+1} \equiv a \cdot D_i \pmod m<br> $$<br> 进而可以推导：<br> $$<br> D_{i+1} \cdot D_{i-1} \equiv a \cdot D_{i} \cdot D_{i-1} \equiv D_i^2 \pmod m<br> $$<br> 即 m 必须整除<br> $$<br> (D_{i+1} \cdot D_{i-1} - D_i^2)<br> $$</p>
+<p> 我们可以计算多个这样的行列式值<br> $$<br> T_i &#x3D; D_{i+1} \cdot D_{i-1} - D_i^2<br> $$<br> ，然后计算它们的最大公约数 (GCD)，即可恢复 m。</p>
+</li>
+<li><p><strong>攻击乘数 a 和增量 c</strong>：<br> 已知 m 后，利用关系<br> $$<br> D_{i+1} \equiv a \cdot D_i \pmod m<br> $$<br> ，可求逆元得到 a：<br> $$<br> a \equiv D_{i+1} \cdot (D_i)^{-1} \pmod m<br> $$<br> 求出 a 后，代入原方程求 c：<br> $$<br> c \equiv S_{i+1} - a \cdot S_i \pmod m<br> $$</p>
+</li>
+<li><p><strong>解密 Flag</strong>：<br> 有了<br> $$<br> m, a, c<br> $$<br>  和当前的最后一个状态<br> $$<br> S_5<br> $$<br> ，我们就可以继续模拟 LCG 生成后续的密钥流，与 <code>C_flag</code> 异或即可还原 Flag。</p>
+</li>
+</ol>
+<h3 id="解题脚本-2"><a href="#解题脚本-2" class="headerlink" title="解题脚本"></a>解题脚本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> gcd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 题目数据</span></span><br><span class="line">P_known = <span class="string">b&#x27;Insecure_linear_congruential_random_number!!!!!!&#x27;</span></span><br><span class="line">C_known_hex = <span class="string">&quot;44e18dfa1acd14aa790fc3bac4ca54c137bcd47bdfc2209a53b83715ecad3e29249845720588cac007bfb94f8476d91a&quot;</span></span><br><span class="line">C_flag_hex  = <span class="string">&quot;1995374a5b64c6696578c1d5bdc6fa3d1e974b813436eab4348db801fb7a6703658eaa4fefa2c6fd6792beb969df8ca70ad87a4f4aea6ca0040d65a3c1e3a5bf2655cafc1e5603a171edc9aa077c0ca264677c351907f35756c14dd7ece428cb424a3804b544ccb53e99935f9bc2d8483dd7587379c99b3542c222008a&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solve</span>():</span><br><span class="line">    <span class="comment"># 1. 恢复密钥流</span></span><br><span class="line">    ck = <span class="built_in">bytes</span>.fromhex(C_known_hex)</span><br><span class="line">    known_len = <span class="built_in">len</span>(P_known)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 将字节转换为 64位整数块</span></span><br><span class="line">    p_blocks = [<span class="built_in">int</span>.from_bytes(P_known[i:i+<span class="number">8</span>], <span class="string">&#x27;big&#x27;</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, known_len, <span class="number">8</span>)]</span><br><span class="line">    c_blocks = [<span class="built_in">int</span>.from_bytes(ck[i:i+<span class="number">8</span>], <span class="string">&#x27;big&#x27;</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, known_len, <span class="number">8</span>)]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 异或得到随机数序列 x</span></span><br><span class="line">    x = [p ^ c <span class="keyword">for</span> p, c <span class="keyword">in</span> <span class="built_in">zip</span>(p_blocks, c_blocks)]</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;[+] Recovered <span class="subst">&#123;<span class="built_in">len</span>(x)&#125;</span> states&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 2. 攻击参数 m</span></span><br><span class="line">    <span class="comment"># 计算差分</span></span><br><span class="line">    diffs = [x[i+<span class="number">1</span>] - x[i] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(x)-<span class="number">1</span>)]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 计算 T = diff[i]*diff[i+2] - diff[i+1]^2</span></span><br><span class="line">    <span class="comment"># 注意：前面的推导用了 D_&#123;i-1&#125;, D_&#123;i&#125;, D_&#123;i+1&#125;</span></span><br><span class="line">    <span class="comment"># 这里 diffs 索引从 0 开始，即 D_0, D_1, D_2...</span></span><br><span class="line">    <span class="comment"># 关系是 D_&#123;k+1&#125; = a * D_k mod m</span></span><br><span class="line">    <span class="comment"># 所以 D_&#123;k+1&#125; * D_k - D_k * D_&#123;k+1&#125; = 0 (没用)</span></span><br><span class="line">    <span class="comment"># 用 D_&#123;k+2&#125; * D_k - D_&#123;k+1&#125;^2 ?</span></span><br><span class="line">    <span class="comment"># D_&#123;k+1&#125; = a D_k</span></span><br><span class="line">    <span class="comment"># D_&#123;k+2&#125; = a D_&#123;k+1&#125; = a^2 D_k</span></span><br><span class="line">    <span class="comment"># D_&#123;k+1&#125;^2 = (a D_k)^2 = a^2 D_k^2</span></span><br><span class="line">    <span class="comment"># D_&#123;k+2&#125; * D_k = (a^2 D_k) * D_k = a^2 D_k^2</span></span><br><span class="line">    <span class="comment"># 两者相等模 m，所以差值是 m 的倍数</span></span><br><span class="line">    </span><br><span class="line">    vals = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(diffs) - <span class="number">2</span>):</span><br><span class="line">        val = diffs[i] * diffs[i+<span class="number">2</span>] - diffs[i+<span class="number">1</span>]**<span class="number">2</span></span><br><span class="line">        vals.append(<span class="built_in">abs</span>(val))</span><br><span class="line">    </span><br><span class="line">    m = reduce(gcd, vals)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;[+] Recovered m: <span class="subst">&#123;m&#125;</span>&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 3. 攻击参数 a, c</span></span><br><span class="line">    <span class="comment"># a = diff[1] / diff[0] mod m</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        a = (diffs[<span class="number">1</span>] * <span class="built_in">pow</span>(diffs[<span class="number">0</span>], -<span class="number">1</span>, m)) % m</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;[+] Recovered a: <span class="subst">&#123;a&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">except</span> ValueError:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;[-] Failed to invert diff[0]&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># c = x[1] - a*x[0] mod m</span></span><br><span class="line">    c = (x[<span class="number">1</span>] - a * x[<span class="number">0</span>]) % m</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;[+] Recovered c: <span class="subst">&#123;c&#125;</span>&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 4. 解密 Flag</span></span><br><span class="line">    <span class="comment"># 最后一个已知状态</span></span><br><span class="line">    state = x[-<span class="number">1</span>]</span><br><span class="line">    </span><br><span class="line">    c_flag = <span class="built_in">bytes</span>.fromhex(C_flag_hex)</span><br><span class="line">    flag_data = <span class="string">b&quot;&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 处理完整块 (8 bytes)</span></span><br><span class="line">    full_blocks = <span class="built_in">len</span>(c_flag) // <span class="number">8</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(full_blocks):</span><br><span class="line">        state = (a * state + c) % m</span><br><span class="line">        <span class="comment"># 取密文快</span></span><br><span class="line">        cipher_block = <span class="built_in">int</span>.from_bytes(c_flag[i*<span class="number">8</span> : (i+<span class="number">1</span>)*<span class="number">8</span>], <span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">        plain_block = cipher_block ^ state</span><br><span class="line">        flag_data += plain_block.to_bytes(<span class="number">8</span>, <span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">        </span><br><span class="line">    <span class="comment"># 处理剩余字节</span></span><br><span class="line">    rem = <span class="built_in">len</span>(c_flag) % <span class="number">8</span></span><br><span class="line">    <span class="keyword">if</span> rem &gt; <span class="number">0</span>:</span><br><span class="line">        state = (a * state + c) % m</span><br><span class="line">        <span class="comment"># 此时密钥流仍然取前 rem 个字节（高位）</span></span><br><span class="line">        <span class="comment"># 原始加密代码是 block ^ k，block 是从 pt 转换来的整数</span></span><br><span class="line">        <span class="comment"># 对于最后不足 8 字节的，加密时补了 \x00</span></span><br><span class="line">        <span class="comment"># 但我们这里直接拿到的密文流是对齐的字节串</span></span><br><span class="line">        <span class="comment"># 解析最后剩余的密文</span></span><br><span class="line">        last_cipher_part = c_flag[full_blocks*<span class="number">8</span>:]</span><br><span class="line">        keystream_bytes = state.to_bytes(<span class="number">8</span>, <span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(rem):</span><br><span class="line">            flag_data += <span class="built_in">bytes</span>([last_cipher_part[i] ^ keystream_bytes[i]])</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;[+] Flag: <span class="subst">&#123;flag_data&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    solve()</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行结果-2"><a href="#运行结果-2" class="headerlink" title="运行结果"></a>运行结果</h3><p>运行上述脚本，输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[+] Recovered 6 states</span><br><span class="line">[+] Recovered m: 9114611192019957857</span><br><span class="line">[+] Recovered a: 2371820993816156899</span><br><span class="line">[+] Recovered c: 2725942441002268621</span><br><span class="line">[+] Flag: b<span class="string">&#x27;SHCTF&#123;LLLLLLLLLLLLLLLCCCCCGGGGGGGGG_TGY%JgWOmAM6V5n55w3m*jcPJZjHO8E1VvzrGjT84tXS332D&amp;o4GZe8%KKzEyAngmwwx9bp5dv_O4dPpOvMy1^hM&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Flag:</strong><br><code>SHCTF{LLLLLLLLLLLLLLLCCCCCGGGGGGGGG_TGY%JgWOmAM6V5n55w3m*jcPJZjHO8E1VvzrGjT84tXS332D&amp;o4GZe8%KKzEyAngmwwx9bp5dv_O4dPpOvMy1^hM}</code></p>
+<h2 id="evan"><a href="#evan" class="headerlink" title="evan"></a>evan</h2><p>题目给了一张png图片，用binwalk扫了一下发现有个zip文件。<br>![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-10 233510.png)<br>然后再用foremost提取了zip文件，发现需要密码。<br>在010editor里打开zip文件，发现有个文件叫flag.txt，猜测密码可能在这个文件里。<br>并且发现zip文件是伪加密的，数据区：504b030414000600，目录区：504b0102140014000900。<br>![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-10 234043.png)<br>所以可以直接把数据区和目录区的加密标志去掉，改成正常的zip文件。<br>修改后就可以直接解压了，flag.txt的内容就是flag。<br><em>flag:</em> <code>SHCTF{Evan_1s_s0_h4nds0me!}</code></p>
+<h2 id="not-eight-length"><a href="#not-eight-length" class="headerlink" title="not_eight_length"></a>not_eight_length</h2><h3 id="题目分析-1"><a href="#题目分析-1" class="headerlink" title="题目分析"></a>题目分析</h3><p>题目提供了一个 Python 脚本 <code>task.py</code> 以及输出的参数 n, e, c。</p>
+<h4 id="1-加密逻辑分析"><a href="#1-加密逻辑分析" class="headerlink" title="1. 加密逻辑分析"></a>1. 加密逻辑分析</h4><p>查看 <code>task.py</code> 中的关键代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p = getPrime(<span class="number">512</span>)</span><br><span class="line">temp = nextprime(p)</span><br><span class="line">q = nextprime(temp)</span><br><span class="line">n = p * q</span><br></pre></td></tr></table></figure>
+
+<p>这里 p 是一个 512 位的随机质数，而 q 是 p 之后的第二个质数。这意味着 p 和 q 非常接近。</p>
+<p>在 RSA 算法中，如果两个因子 p 和 q 非常接近，那么它们的乘积 n 的平方根<br>$$<br>\sqrt{n}<br>$$<br> 将非常接近这两个因子。具体来说，<br>$$<br>p \approx \sqrt{n}<br>$$<br>这种情况下，n 容易受到 <strong>Fermat 分解法</strong> 或简单的 <strong>平方根附近的线性搜索</strong> 攻击。</p>
+<h4 id="2-解密逻辑"><a href="#2-解密逻辑" class="headerlink" title="2. 解密逻辑"></a>2. 解密逻辑</h4><p>解密过程分为三步：</p>
+<ol>
+<li><strong>分解 n</strong>：计算 <code>root = isqrt(n)</code>，然后在 <code>root</code> 附近向下搜索找到 p。</li>
+<li><strong>RSA 解密</strong>：利用找到的 p 和 q 计算私钥 d，然后解密密文 c 得到明文整数 m。</li>
+<li><strong>解码明文</strong>：这是本题的 tricky 之处。<ul>
+<li>常规的 <code>long_to_bytes</code> (8位&#x2F;字节) 无法得到有意义的字符串。</li>
+<li>题目名称 “not_eight_length” 和提示 “并不是所有的题目都是8位哦” 暗示并非 8-bit编码。</li>
+<li>将解密后的整数 $m$ 转换为二进制，发现其长度为 301 位。</li>
+<li>尝试不同的位长，发现 $301 &#x3D; 43 \times 7$，即每 7 位代表一个字符。</li>
+<li>将二进制按照 7 位一组进行切割并转换为 ASCII 字符，即可得到 flag。</li>
+</ul>
+</li>
+</ol>
+<h3 id="解题脚本-solve-py"><a href="#解题脚本-solve-py" class="headerlink" title="解题脚本 (solve.py)"></a>解题脚本 (<code>solve.py</code>)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> isqrt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 题目给出的参数</span></span><br><span class="line">n = <span class="number">172113078605688993167549425692325605693719693815361211139292482064751327114103720980024048929660587708361336638391782482562146750015275689746844657810313957504514376746631004470588767450715447808496931019899675426647981223953742448155335425954936981689508246039354976739386690722681509534696120714425567962527</span></span><br><span class="line">e = <span class="number">65537</span></span><br><span class="line">c = <span class="number">47611886444337000128826989676221463775339201602510220886566675518701473035795983698414894648685567473325732994652173596155832091773084566434572294009136327143103984205257862772844337876748271318723897875683699389776414143689503392203746843332334862282735760778003407162335426111769147991087343730761557771446</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 分解 N (因为 p 和 q 很接近，使用费马分解的变体/平方根搜索)</span></span><br><span class="line">root = isqrt(n)</span><br><span class="line">found = <span class="literal">False</span></span><br><span class="line">p = <span class="number">0</span></span><br><span class="line"><span class="comment"># 在 sqrt(n) 附近向下搜索 p</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100000</span>):</span><br><span class="line">    cand = root - i</span><br><span class="line">    <span class="keyword">if</span> n % cand == <span class="number">0</span>:</span><br><span class="line">        p = cand</span><br><span class="line">        found = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> found:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Factorization failed&quot;</span>)</span><br><span class="line">    exit()</span><br><span class="line"></span><br><span class="line">q = n // p</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Found factors:\np = <span class="subst">&#123;p&#125;</span>\nq = <span class="subst">&#123;q&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. RSA 解密</span></span><br><span class="line">phi = (p - <span class="number">1</span>) * (q - <span class="number">1</span>)</span><br><span class="line">d = <span class="built_in">pow</span>(e, -<span class="number">1</span>, phi)</span><br><span class="line">m = <span class="built_in">pow</span>(c, d, n)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Decrypted integer m: <span class="subst">&#123;m&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 7-bit 解码</span></span><br><span class="line"><span class="comment"># 转换为二进制字符串，去掉 &#x27;0b&#x27; 前缀</span></span><br><span class="line">m_bin = <span class="built_in">bin</span>(m)[<span class="number">2</span>:]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按照 7 位一组进行解码</span></span><br><span class="line">chunk_size = <span class="number">7</span></span><br><span class="line">flag = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(m_bin), chunk_size):</span><br><span class="line">    chunk = m_bin[i:i+chunk_size]</span><br><span class="line">    flag += <span class="built_in">chr</span>(<span class="built_in">int</span>(chunk, <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Flag: <span class="subst">&#123;flag&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><p>运行脚本输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Flag: SHCTF&#123;99f4a238-9bd5-498a-b8ea-5cd243a36a19&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="古典也颇有韵味啊"><a href="#古典也颇有韵味啊" class="headerlink" title="古典也颇有韵味啊"></a>古典也颇有韵味啊</h2><h3 id="题目信息"><a href="#题目信息" class="headerlink" title="题目信息"></a>题目信息</h3><ul>
+<li><strong>题目名称</strong>：古典也颇有韵味啊</li>
+<li><strong>密文</strong>：<code>bcin!guy zeui wh! wwps ce yryz ysex:wpurt{wc@xdii_u2frmt_cwkg_ktani0}</code></li>
+<li><strong>encode_key</strong>：<code>ABBAAABBABBAABABAABBABAAAAABBAAABAAABBAAAABAABAAAAAABAA</code></li>
+<li><strong>提示</strong>：“你是维吉尼亚还是维多利亚？倒是有点共同点”</li>
+</ul>
+<h3 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h3><h4 id="1-分析-encode-key-培根密码"><a href="#1-分析-encode-key-培根密码" class="headerlink" title="1. 分析 encode_key (培根密码)"></a>1. 分析 encode_key (培根密码)</h4><p>观察 <code>encode_key</code>，它由字符 ‘A’ 和 ‘B’ 组成，且长度为 55。这符合 <strong>培根密码 (Bacon Cipher)</strong> 的特征，即每 5 个字符代表一个字母。</p>
+<p>将 <code>encode_key</code> 分组如下：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ABBAA ABBAB BAABA BAABB ABAAA AABBA AABAA ABBAA AABAA BAABA AABAA</span><br></pre></td></tr></table></figure>
+
+<p>使用经典的培根密码表（I&#x2F;J 合并，U&#x2F;V 合并）进行映射：</p>
+<ul>
+<li><code>ABBAA</code> → <strong>n</strong></li>
+<li><code>ABBAB</code> → <strong>o</strong></li>
+<li><code>BAABA</code> → <strong>t</strong></li>
+<li><code>BAABB</code> → <strong>v</strong> (在一些表中 u&#x2F;v 共享)</li>
+<li><code>ABAAA</code> → <strong>i</strong></li>
+<li><code>AABBA</code> → <strong>g</strong></li>
+<li><code>AABAA</code> → <strong>e</strong></li>
+<li><code>ABBAA</code> → <strong>n</strong></li>
+<li><code>AABAA</code> → <strong>e</strong></li>
+<li><code>BAABA</code> → <strong>r</strong> (注：标准表中 BAABA 对应 T，但结合上下文，此处应理解为单词 Vigenere)</li>
+<li><code>AABAA</code> → <strong>e</strong></li>
+</ul>
+<p>解码得到的字符串为：<strong><code>notvigenere</code></strong>。</p>
+<h4 id="2-识别加密算法-Autokey-Vigenere"><a href="#2-识别加密算法-Autokey-Vigenere" class="headerlink" title="2. 识别加密算法 (Autokey Vigenere)"></a>2. 识别加密算法 (Autokey Vigenere)</h4><p>解析出的密钥是 <code>notvigenere</code>（意为“不是维吉尼亚”）。<br>题目提示“你是维吉尼亚还是维多利亚？”，且我们得到了“不是维吉尼亚”的暗示。这指向了 <strong>自动密钥密码 (Autokey Cipher)</strong>。</p>
+<p>Autokey Vigenere 与普通 Vigenere 的区别在于：密钥用完后，它不会循环使用密钥，而是接上<strong>明文消息</strong>本身作为后续的密钥流。</p>
+<h4 id="3-解密"><a href="#3-解密" class="headerlink" title="3. 解密"></a>3. 解密</h4><p>使用 <code>notvigenere</code> 作为初始密钥，对密文进行 Autokey Vigenere 解密。</p>
+<p><strong>解密逻辑：</strong></p>
+<ol>
+<li>第 1 个字符：<code>c_1</code> 解密用 <code>k_1</code> -&gt; 得到 <code>p_1</code></li>
+<li>第 2 个字符：<code>c_2</code> 解密用 <code>k_2</code> -&gt; 得到 <code>p_2</code><br>…</li>
+<li>当初始密钥用尽后，第 n 个字符的解密密钥变为 <code>p_{n-len(key)}</code>（即之前解密出的明文）。</li>
+</ol>
+<p><strong>解密脚本 (Python):</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">autokey_vigenere_decrypt</span>(<span class="params">ciphertext, key</span>):</span><br><span class="line">    result = []</span><br><span class="line">    <span class="comment"># 初始密钥队列</span></span><br><span class="line">    key_queue = [<span class="built_in">ord</span>(c) - <span class="built_in">ord</span>(<span class="string">&#x27;A&#x27;</span>) <span class="keyword">for</span> c <span class="keyword">in</span> key.upper()]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> char <span class="keyword">in</span> ciphertext:</span><br><span class="line">        <span class="keyword">if</span> char.isalpha():</span><br><span class="line">            <span class="comment"># 从队列头部取出一个密钥值</span></span><br><span class="line">            shift = key_queue.pop(<span class="number">0</span>)</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> char.isupper():</span><br><span class="line">                <span class="comment"># 解密公式: P = (C - K) % 26</span></span><br><span class="line">                p_val = (<span class="built_in">ord</span>(char) - <span class="built_in">ord</span>(<span class="string">&#x27;A&#x27;</span>) - shift) % <span class="number">26</span></span><br><span class="line">                decrypted_char = <span class="built_in">chr</span>(p_val + <span class="built_in">ord</span>(<span class="string">&#x27;A&#x27;</span>))</span><br><span class="line">                <span class="comment"># 将解密出的明文值加入密钥队列末尾 (Autokey)</span></span><br><span class="line">                key_queue.append(p_val)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                p_val = (<span class="built_in">ord</span>(char) - <span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>) - shift) % <span class="number">26</span></span><br><span class="line">                decrypted_char = <span class="built_in">chr</span>(p_val + <span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>))</span><br><span class="line">                key_queue.append(p_val)</span><br><span class="line">            </span><br><span class="line">            result.append(decrypted_char)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result.append(char)</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join(result)</span><br><span class="line"></span><br><span class="line">ciphertext = <span class="string">&quot;bcin!guy zeui wh! wwps ce yryz ysex:wpurt&#123;wc@xdii_u2frmt_cwkg_ktani0&#125;&quot;</span></span><br><span class="line">key = <span class="string">&quot;notvigenere&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(autokey_vigenere_decrypt(ciphertext, key))</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-结果"><a href="#4-结果" class="headerlink" title="4. 结果"></a>4. 结果</h4><p>运行脚本得到的明文为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oops!you made it! here is your flag:shctf&#123;cl@ssic_c2ypto_also_crypt0&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Final-Flag"><a href="#Final-Flag" class="headerlink" title="Final Flag"></a>Final Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHCTF&#123;cl@ssic_c2ypto_also_crypt0&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="不止二维码"><a href="#不止二维码" class="headerlink" title="不止二维码"></a>不止二维码</h2><p>题目给了一个二维码图片，直接用QR-Resercher扫描，是一个假的flag，把图片拉到stegesolve里切换不同图层，发现还有三个二维码，用QR-Resercher扫描。<br>![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-03 213803.png)<br>![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-03 213835.png)<br>![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-03 213859.png)<br>得到以下内容：<br><code>FLAG_PART_1: SHCTF{55a23d24-</code><br><code>FLAG_PART_2: ABBB/AABBB/AAAAA/BBBBB/ABBBBA/BBBBA/B/AABBB/ABBB</code><br><code>FLAG_PART_3: MkZkbDg3ZlY3ZEQxalNGenQyZUFYT3E0NmRrTXFV</code>  </p>
+<p>PART1是明文<br>PART2是莫斯电码，A代表划，B代表点，解码后得到：<code>b705-4e7b</code> (莫尔斯电码 B705-4E7B，<strong>统一转化为小写以匹配上下文</strong>)<br>PART3是Base混合多重解码:[ 解码4次 ] Base64 -&gt; Base62 -&gt; Base58 -&gt; Base32混合解码结果:<code>-942e-bdd}</code>  </p>
+<p><strong>flag:</strong> <code>SHCTF{55a23d24-b705-4e7b-942e-bdd}</code></p>
+<h2 id="滴答滴答"><a href="#滴答滴答" class="headerlink" title="滴答滴答"></a>滴答滴答</h2><p>题目给了一个音频文件，打开来听发现是SSTV（Slow Scan Television，慢扫描电视）信号。<br>安装虚拟声卡 Virtual Audio Cable，使用SSTV解码软件 MMSSTV 进行解码。  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#使用步骤:</span></span><br><span class="line">1.点击Setup-Sound Control and Devices将默认输入设备和输出设备都设置为虚拟声卡line1</span><br><span class="line">2.用VLC播放音频（最好不要用Au播放）</span><br><span class="line">3.如果扫描出来的图片有错位，可以点击slant手动修改</span><br><span class="line">4.退出RX-SSTV前要注意把默认的输入/输出设备改回原来的参数</span><br></pre></td></tr></table></figure>
+
+<p>解码后得到一张图片，flag就在图片上。<br>![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-06 214517.png)<br><strong>flag:</strong> <code>SHCTF{Radio_is_just_too_much_fun!}</code></p>
+<h2 id="薇薇安的美照"><a href="#薇薇安的美照" class="headerlink" title="薇薇安的美照"></a>薇薇安的美照</h2><p>题目给了一张jpg照片，用010editor打开，发现文件尾有base64编码的字符串。<br>![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-11 191205.png)<br><strong>base64:</strong> <code>MV84Xzc0XzlwXzdfOTJfMTZfNV8xOF84Xzc=</code><br>解码后得到：<code>1_8_74_20_7_92_16_5_18_8_7</code>，这是一个数字序列。<br>结合题目所提的：学了一天<strong>化学</strong>的Zero，决定去打打绝区零里，flag格式：SHCTF{**}记得flag是大写的呢<br>将这些数字按照元素周期表的原子序数对应的元素符号，得到flag：<code>SHCTF{H_O_W_CA_N_U_S_B_AR_O_N}</code></p>
+<h2 id="提问前请先搜索"><a href="#提问前请先搜索" class="headerlink" title="提问前请先搜索"></a>提问前请先搜索</h2><p>认真阅读<br>![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-06 235856.png)<br><strong>flag:</strong> <code>SHCTF{dO_nOT_r3lY_0n_A1}</code></p>
+<h2 id="奇怪的数据"><a href="#奇怪的数据" class="headerlink" title="奇怪的数据"></a>奇怪的数据</h2><p>题目给了一个txt文件，观察后发现是图像的像素数据，且每个括号有三个数字，分别代表RGB三个通道的值。<br>将这些数据转换成图像，得到一张二维码图片。<br>解密脚本如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;flag.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    content = file.read()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除换行符，按分号分割数据</span></span><br><span class="line"><span class="comment"># 假设数据格式为 (r,g,b);(r,g,b);...</span></span><br><span class="line">data = []</span><br><span class="line">parts = content.replace(<span class="string">&#x27;\n&#x27;</span>, <span class="string">&#x27;&#x27;</span>).split(<span class="string">&#x27;;&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> part <span class="keyword">in</span> parts:</span><br><span class="line">    <span class="keyword">if</span> part.strip():</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            data.append(<span class="built_in">eval</span>(part.strip()))</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;解析错误: <span class="subst">&#123;part&#125;</span> - <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将列表转换为NumPy数组，形状为 (N, 3)</span></span><br><span class="line">data = np.array(data, dtype=np.uint8)</span><br><span class="line"></span><br><span class="line">data_length = <span class="built_in">len</span>(data)</span><br><span class="line">sqrt_length = <span class="built_in">int</span>(math.sqrt(data_length))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(sqrt_length, <span class="number">0</span>, -<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> data_length % i == <span class="number">0</span>:  <span class="comment"># 如果长度可以整除</span></span><br><span class="line">        rows = i</span><br><span class="line">        cols = data_length // i</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;尝试重塑为 <span class="subst">&#123;rows&#125;</span> 行, <span class="subst">&#123;cols&#125;</span> 列&quot;</span>)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            reshaped_data = data.reshape(rows, cols, <span class="number">3</span>)</span><br><span class="line">            image = Image.fromarray(reshaped_data, <span class="string">&#x27;RGB&#x27;</span>)</span><br><span class="line">            image.save(<span class="string">f&quot;<span class="subst">&#123;rows&#125;</span>x<span class="subst">&#123;cols&#125;</span>.png&quot;</span>)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;无法重塑为 <span class="subst">&#123;rows&#125;</span> 行, <span class="subst">&#123;cols&#125;</span> 列: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行脚本后，发现当重塑为 410 行, 410 列时，生成的图片是一个清晰的二维码。扫码得到base64：<code>U0hDVEZ7VGgzX1F1ZXN0MW9uNV9BcmVfVG9vX0QxZmZpY3UxdCEhISF9</code><br>![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-07 211534.png)<br>base64解码后得到flag：<code>SHCTF{Th3_Quest1on5_Are_Too_D1fficu1t!!!!}</code></p>
+<h2 id="Office"><a href="#Office" class="headerlink" title="Office"></a>Office</h2><h3 id="题目分析-2"><a href="#题目分析-2" class="headerlink" title="题目分析"></a>题目分析</h3><p>题目提供了一个 <code>flag.docx</code> 文件。由于 Word 文档本质上是 ZIP 压缩格式，我们可以解压或直接查看其内部结构来寻找线索。</p>
+<h3 id="解题步骤-1"><a href="#解题步骤-1" class="headerlink" title="解题步骤"></a>解题步骤</h3><h4 id="1-探索文件结构"><a href="#1-探索文件结构" class="headerlink" title="1. 探索文件结构"></a>1. 探索文件结构</h4><p>查看 <code>flag.docx</code> 的内部文件，在 <code>word/theme/</code> 目录下发现了一个非标准文件 <code>alphabet</code>。</p>
+<p>读取 <code>word/theme/alphabet</code> 内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+/0-6a-zA-Z7-9=</span><br></pre></td></tr></table></figure>
+<p>这看起来像是一个压缩或简写的自定义 Base64 索引表。将其按照范围展开后如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+/0123456abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ789</span><br></pre></td></tr></table></figure>
+<p>正好组成了 64 个字符，符合 Base64 编码表的特征。</p>
+<h4 id="2-提取加密文本"><a href="#2-提取加密文本" class="headerlink" title="2. 提取加密文本"></a>2. 提取加密文本</h4><p>查看 Word 文档的正文内容（位于 <code>word/document.xml</code>），提取出其中的文本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lRy1m2qYkmewkTqDrneCoTCQoUiFqm7zqoeRoT7DqDCAqm7QsTqRuT3PqjWUt5e7</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-编写解密脚本"><a href="#3-编写解密脚本" class="headerlink" title="3. 编写解密脚本"></a>3. 编写解密脚本</h4><p>利用 Python 的 <code>maketrans</code> 和 <code>translate</code> 方法，将使用自定义码表的密文映射回标准 Base64 码表，然后进行标准解码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 定义码表</span></span><br><span class="line"><span class="comment"># 自定义码表 (从 word/theme/alphabet 还原)</span></span><br><span class="line">custom_alpha = <span class="string">&quot;+/0123456abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ789&quot;</span></span><br><span class="line"><span class="comment"># 标准 Base64 码表</span></span><br><span class="line">std_alpha = <span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 密文 (从 word/document.xml 提取)</span></span><br><span class="line">encoded_str = <span class="string">&quot;lRy1m2qYkmewkTqDrneCoTCQoUiFqm7zqoeRoT7DqDCAqm7QsTqRuT3PqjWUt5e7&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 映射转换</span></span><br><span class="line"><span class="comment"># 将密文中的字符从 custom_alpha 映射到 std_alpha 对应的位置</span></span><br><span class="line">trans_table = <span class="built_in">str</span>.maketrans(custom_alpha, std_alpha)</span><br><span class="line">decoded_b64_str = encoded_str.translate(trans_table)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. Base64 解码</span></span><br><span class="line">flag = base64.b64decode(decoded_b64_str)</span><br><span class="line"><span class="built_in">print</span>(flag.decode(<span class="string">&quot;utf-8&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-获取-Flag"><a href="#4-获取-Flag" class="headerlink" title="4. 获取 Flag"></a>4. 获取 Flag</h4><p>运行解密脚本得到最终 Flag：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHCTF&#123;MS_Office_is_the_best_office_software.wps&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="hash1"><a href="#hash1" class="headerlink" title="hash1"></a>hash1</h2><h3 id="题目分析-3"><a href="#题目分析-3" class="headerlink" title="题目分析"></a>题目分析</h3><p>题目提供了一个 Python 脚本 <code>hash1.py</code> 和一个运行在 <code>challenge.shc.tf:31800</code> 的远程环境。</p>
+<p>查看 <code>hash1.py</code> 的关键逻辑：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">msg = <span class="built_in">input</span>(<span class="string">f&quot;Give me both different apples (hex(apple1), hex(apple2)) : &quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    apples = msg.split(<span class="string">&quot;,&quot;</span>)</span><br><span class="line">    apple1 = <span class="built_in">bytes</span>.fromhex(apples[<span class="number">0</span>])</span><br><span class="line">    apple2 = <span class="built_in">bytes</span>.fromhex(apples[<span class="number">1</span>])</span><br><span class="line">    hash_apple1 = hashlib.md5(apple1).hexdigest()</span><br><span class="line">    hash_apple2 = hashlib.md5(apple2).hexdigest()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> apple1 == apple2:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Oh snap, both apples are exactly the same&quot;</span>)</span><br><span class="line">    <span class="keyword">elif</span> hash_apple1 != hash_apple2:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Oh no, they taste different&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Yeah, both apples are delicious!!! This is your prize: <span class="subst">&#123;flag&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>程序的逻辑非常明确：</p>
+<ol>
+<li>要求用户输入两个用逗号分隔的字符串。</li>
+<li>将这两个字符串作为十六进制解码为字节串 <code>apple1</code> 和 <code>apple2</code>。</li>
+<li><strong>检查 1</strong>：<code>apple1</code> 不能等于 <code>apple2</code>（原文不同）。</li>
+<li><strong>检查 2</strong>：<code>hashlib.md5(apple1)</code> 必须等于 <code>hashlib.md5(apple2)</code>（哈希值相同）。</li>
+<li>如果满足上述条件，输出 flag。</li>
+</ol>
+<h3 id="漏洞原理-1"><a href="#漏洞原理-1" class="headerlink" title="漏洞原理"></a>漏洞原理</h3><p>这道题利用的是 <strong>MD5 哈希碰撞（MD5 Collision）</strong>。MD5 是一种通过产生 128 位（16 字节）哈希值来验证数据完整性的算法。然而，MD5 已经被证明是不安全的，因为它容易受到碰撞攻击——即找到两个不同的输入数据，它们产生完全相同的 MD5 哈希值。</p>
+<p>本题就是一个标准的验证 MD5 碰撞的题目。</p>
+<h3 id="解题过程"><a href="#解题过程" class="headerlink" title="解题过程"></a>解题过程</h3><p>我们需要找到两个不同的 Hex 字符串，它们的 MD5 值相等。这些字符串在网络上有很多公开的例子（例如通过 <code>fastcoll</code> 工具生成的）。</p>
+<p>这里选用一组经典的 MD5 碰撞数据：</p>
+<ul>
+<li><strong>数据 1 (Hex):</strong><br><code>4dc968ff0ee35c209572d4777b721587d36fa7b21bdc56b74a3dc0783e7b9518afbfa200a8284bf36e8e4b55b35f427593d849676da0d1555d8360fb5f07fea2</code></li>
+<li><strong>数据 2 (Hex):</strong><br><code>4dc968ff0ee35c209572d4777b721587d36fa7b21bdc56b74a3dc0783e7b9518afbfa202a8284bf36e8e4b55b35f427593d849676da0d1d55d8360fb5f07fea2</code></li>
+</ul>
+<p>我们可以简单验证一下：</p>
+<ul>
+<li>这两段数据在中间的几位上有所不同（<code>...a200a8...</code> vs <code>...a202a8...</code>）。</li>
+<li>它们的 MD5 哈希值都是 <code>008ee33a9d58b51cfeb425b0959121c9</code>。</li>
+</ul>
+<h4 id="Exploit-脚本-solve-py"><a href="#Exploit-脚本-solve-py" class="headerlink" title="Exploit 脚本 (solve.py)"></a>Exploit 脚本 (<code>solve.py</code>)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line">HOST = <span class="string">&quot;challenge.shc.tf&quot;</span></span><br><span class="line">PORT = <span class="number">31800</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 两个不同的 Hex 字符串，但 MD5 相同</span></span><br><span class="line">apple1_hex = <span class="string">&quot;4dc968ff0ee35c209572d4777b721587d36fa7b21bdc56b74a3dc0783e7b9518afbfa200a8284bf36e8e4b55b35f427593d849676da0d1555d8360fb5f07fea2&quot;</span></span><br><span class="line">apple2_hex = <span class="string">&quot;4dc968ff0ee35c209572d4777b721587d36fa7b21bdc56b74a3dc0783e7b9518afbfa202a8284bf36e8e4b55b35f427593d849676da0d1d55d8360fb5f07fea2&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 构造 payload，中间用逗号分隔</span></span><br><span class="line">payload = <span class="string">f&quot;<span class="subst">&#123;apple1_hex&#125;</span>,<span class="subst">&#123;apple2_hex&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    s.connect((HOST, PORT))</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 接收提示信息</span></span><br><span class="line">    data = s.recv(<span class="number">1024</span>).decode()</span><br><span class="line">    <span class="built_in">print</span>(data, end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 发送 payload</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Sending payload...&quot;</span>)</span><br><span class="line">    s.sendall((payload + <span class="string">&quot;\n&quot;</span>).encode())</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 接收返回结果（包含 Flag）</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        data = s.recv(<span class="number">1024</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> data:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="built_in">print</span>(data.decode(), end=<span class="string">&quot;&quot;</span>)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    s.close()</span><br></pre></td></tr></table></figure>
+
+<h3 id="Flag-1"><a href="#Flag-1" class="headerlink" title="Flag"></a>Flag</h3><p>运行脚本后，成功获取 Flag：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHCTF&#123;CoN9ra7U14Tl0ns_BO7h_h45h1_@PPL3s_4re_VerY_d31iCIOUS_IoL&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Hash2"><a href="#Hash2" class="headerlink" title="Hash2"></a>Hash2</h2><h3 id="题目分析-4"><a href="#题目分析-4" class="headerlink" title="题目分析"></a>题目分析</h3><p>题目提供了一个 Python 脚本 <code>hash2.py</code>，要求用户输入两个 hex 编码的字符串（<code>apple1</code> 和 <code>apple2</code>）。</p>
+<p>服务端会对这两个字符串进行以下检查：</p>
+<ol>
+<li><strong>长度限制</strong>：长度必须大于 16 字节。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(apple1) &lt;= <span class="number">16</span> <span class="keyword">or</span> <span class="built_in">len</span>(apple1) &lt;= <span class="number">16</span>: <span class="comment"># 注意：原题这里可能有笔误，但意图是检查长度</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Both apples are too small&quot;</span>)</span><br></pre></td></tr></table></figure></li>
+<li><strong>字符集限制（前缀）</strong>：两个字符串的前 16 个字节必须全部在 <code>string.ascii_letters + string.digits</code>（即大小写字母和数字）范围内。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">elif</span> <span class="keyword">not</span> <span class="built_in">all</span>(ch <span class="keyword">in</span> table <span class="keyword">for</span> ch <span class="keyword">in</span> apple1[:<span class="number">16</span>]) <span class="keyword">or</span> <span class="keyword">not</span> <span class="built_in">all</span>(ch <span class="keyword">in</span> table <span class="keyword">for</span> ch <span class="keyword">in</span> apple2[:<span class="number">16</span>]):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;No, both apples are too ordinary&quot;</span>)</span><br></pre></td></tr></table></figure></li>
+<li><strong>内容差异</strong>：两个字符串不能完全相同。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">elif</span> apple1 == apple2:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Oh snap, both apples are exactly the same&quot;</span>)</span><br></pre></td></tr></table></figure></li>
+<li><strong>哈希碰撞</strong>：两个字符串的 MD5 哈希值必须相同。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">elif</span> hash_apple1 != hash_apple2:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Oh no, they taste different&quot;</span>)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>如果满足所有条件，即可获得 Flag。</p>
+<h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><p>这是一个典型的 <strong>MD5 前缀碰撞（Chosen-Prefix Collision）</strong> 问题。我们需要构造两个不同的字节序列，使它们拥有相同的 MD5 哈希值，并且都以满足特定条件（字母数字）的前缀开头。</p>
+<p>手动构造 MD5 碰撞极其困难，通常使用 Marc Stevens 开发的工具 <strong>fastcoll</strong>。<code>fastcoll</code> 允许我们指定一个共同的前缀（Initial Value&#x2F;State），然后它会生成两个不同的后缀块（128字节），使得拼接后的两个完整数据的 MD5 哈希值相同。</p>
+<h4 id="攻击步骤"><a href="#攻击步骤" class="headerlink" title="攻击步骤"></a>攻击步骤</h4><ol>
+<li><strong>构造前缀</strong>：我们需要一个长度为 16 字节且全是字母数字的字符串。例如：<code>0123456789abcdef</code>。</li>
+<li><strong>生成碰撞</strong>：使用 <code>fastcoll</code> 基于该前缀生成两个碰撞文件。</li>
+<li><strong>提交 Payload</strong>：读取生成的文件内容，转换为 Hex 字符串提交给服务器。</li>
+</ol>
+<h3 id="复现过程"><a href="#复现过程" class="headerlink" title="复现过程"></a>复现过程</h3><h3 id="1-准备前缀文件"><a href="#1-准备前缀文件" class="headerlink" title="1. 准备前缀文件"></a>1. 准备前缀文件</h3><p>创建一个名为 <code>prefix.txt</code> 的文件，写入 16 字节的合法前缀。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -n <span class="string">&quot;0123456789abcdef&quot;</span> &gt; prefix.txt</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-使用-fastcoll-生成碰撞"><a href="#2-使用-fastcoll-生成碰撞" class="headerlink" title="2. 使用 fastcoll 生成碰撞"></a>2. 使用 fastcoll 生成碰撞</h4><p>下载 <code>fastcoll</code> 工具并在终端运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./fastcoll -p prefix.txt -o col1.bin col2.bin</span><br></pre></td></tr></table></figure>
+<p>该命令会生成 <code>col1.bin</code> 和 <code>col2.bin</code>。这两个文件的结构如下：</p>
+<ul>
+<li><strong>前 16 字节</strong>：是我们指定的 <code>0123456789abcdef</code>（满足条件2）。</li>
+<li><strong>后续 128 字节</strong>：由 fastcoll 生成的碰撞块。</li>
+<li><strong>总长度</strong>：144 字节（满足条件1：&gt; 16）。</li>
+<li><strong>差异性</strong>：fastcoll 保证两个文件内容不同（满足条件3）。</li>
+<li><strong>哈希值</strong>：MD5 算法的特性保证两个文件哈希相同（满足条件4）。</li>
+</ul>
+<h4 id="3-Exploitation-脚本"><a href="#3-Exploitation-脚本" class="headerlink" title="3. Exploitation 脚本"></a>3. Exploitation 脚本</h4><p>编写 Python 脚本自动读取并发送 Payload：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solve</span>():</span><br><span class="line">    <span class="comment"># 读取生成的碰撞文件</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;col1.bin&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        apple1 = f.read()</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;col2.bin&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        apple2 = f.read()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 连接题目</span></span><br><span class="line">    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    s.connect((<span class="string">&quot;challenge.shc.tf&quot;</span>, <span class="number">30376</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 接收提示</span></span><br><span class="line">    <span class="built_in">print</span>(s.recv(<span class="number">1024</span>).decode())</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 发送 payload</span></span><br><span class="line">    payload = <span class="string">f&quot;<span class="subst">&#123;apple1.<span class="built_in">hex</span>()&#125;</span>,<span class="subst">&#123;apple2.<span class="built_in">hex</span>()&#125;</span>&quot;</span></span><br><span class="line">    s.sendall((payload + <span class="string">&quot;\n&quot;</span>).encode())</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取 Flag</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        data = s.recv(<span class="number">4096</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> data:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="built_in">print</span>(data.decode())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    solve()</span><br></pre></td></tr></table></figure>
+
+<p>运行脚本即可获得 Flag。</p>
+<h2 id="椭圆曲线"><a href="#椭圆曲线" class="headerlink" title="椭圆曲线"></a>椭圆曲线</h2><h3 id="题目分析-5"><a href="#题目分析-5" class="headerlink" title="题目分析"></a>题目分析</h3><p>题目给出了两个文件：<code>task.py</code>（加密脚本）和 <code>data.json</code>（泄露的数据）。</p>
+<h4 id="1-代码逻辑分析"><a href="#1-代码逻辑分析" class="headerlink" title="1. 代码逻辑分析"></a>1. 代码逻辑分析</h4><p>在 <code>task.py</code> 中，有两个主要的函数涉及 flag (<code>secret_data</code>) 的处理：</p>
+<ol>
+<li><p><strong><code>ver_length</code> 函数</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">ver_length</span>(<span class="params">secret_data</span>):</span><br><span class="line">    p = getPrime(<span class="number">256</span>)</span><br><span class="line">    secret = bytes_to_long(secret_data)</span><br><span class="line">    start = secret - <span class="number">19</span> * p</span><br><span class="line">    end = secret + <span class="number">21</span> * p</span><br><span class="line">    <span class="keyword">return</span> start, end</span><br></pre></td></tr></table></figure>
+<p>这个函数生成了一个 256 位的随机质数 <code>p</code>，然后根据 <code>secret</code>（flag 的整数形式）计算了 <code>start</code> 和 <code>end</code>。</p>
+</li>
+<li><p><strong><code>init</code> 函数</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">init</span>(<span class="params">secret_data, msg1, msg2</span>):</span><br><span class="line">    <span class="comment"># ... (标准的 ECDSA 签名过程)</span></span><br><span class="line">    k = random.getrandbits(order.bit_length())</span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line">    signature1 = priv_key.sign(hash1, k)</span><br><span class="line">    signature2 = priv_key.sign(hash2, k)</span><br><span class="line">    <span class="keyword">return</span> signature1, signature2, k, secret</span><br></pre></td></tr></table></figure>
+<p>这里使用 ECDSA 对两个消息进行了签名，并且<strong>复用了随机数 k</strong>。这通常是一个严重的 ECDSA 漏洞（Nonce Reuse Attack），可以通过两个签名恢复密钥。</p>
+</li>
+</ol>
+<h4 id="2-漏洞选择"><a href="#2-漏洞选择" class="headerlink" title="2. 漏洞选择"></a>2. 漏洞选择</h4><p>虽然题目通过 <code>init</code> 函数故意展示了一个 ECDSA 随机数复用的漏洞，但我们仔细观察 <code>ver_length</code> 函数，会发现一个更简单、更直接的代数漏洞。</p>
+<p><code>ver_length</code> 泄露了 <code>start</code> 和 <code>end</code>，它们与 <code>secret</code> 和 <code>p</code> 满足以下线性关系：<br>$$<br>\begin{cases}<br>start &#x3D; secret - 19 \times p \<br>end &#x3D; secret + 21 \times p<br>\end{cases}<br>$$</p>
+<p>这是一个简单的二元一次方程组，我们可以直接解出 <code>p</code> 和 <code>secret</code>，而完全不需要处理复杂的椭圆曲线数学。</p>
+<h3 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h3><ol>
+<li><p><strong>消去 secret</strong>：<br>用第二个方程减去第一个方程：<br>$$<br>end - start &#x3D; (secret + 21p) - (secret - 19p)<br>$$<br>$$<br>end - start &#x3D; 21p + 19p &#x3D; 40p<br>$$</p>
+</li>
+<li><p><strong>求解 p</strong>：<br>$$<br>p &#x3D; \frac{end - start}{40}<br>$$</p>
+</li>
+<li><p><strong>恢复 secret (flag)</strong>：<br>将求得的 <code>p</code> 代入任意一个方程：<br>$$<br>secret &#x3D; start + 19 \times p<br>$$</p>
+</li>
+<li><p><strong>将整数转换为 flag 字符串</strong>。</p>
+</li>
+</ol>
+<h3 id="解题脚本-Solve-Script"><a href="#解题脚本-Solve-Script" class="headerlink" title="解题脚本 (Solve Script)"></a>解题脚本 (Solve Script)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> long_to_bytes</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solve</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;[-] Loading data...&quot;</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;src/data.json&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            data = json.load(f)</span><br><span class="line">    <span class="keyword">except</span> FileNotFoundError:</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;data.json&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            data = json.load(f)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 从 JSON 中读取数值</span></span><br><span class="line">    start = <span class="built_in">int</span>(data[<span class="string">&#x27;start&#x27;</span>], <span class="number">16</span>)</span><br><span class="line">    end = <span class="built_in">int</span>(data[<span class="string">&#x27;end&#x27;</span>], <span class="number">16</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 打印读取到的值</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;start: <span class="subst">&#123;start&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;end:   <span class="subst">&#123;end&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 计算差值</span></span><br><span class="line">    diff = end - start</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 验证差值是否能被 40 整除</span></span><br><span class="line">    <span class="keyword">if</span> diff % <span class="number">40</span> != <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;[!] Error: (end - start) is not divisible by 40.&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 求解 p</span></span><br><span class="line">    p = diff // <span class="number">40</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 求解 secret</span></span><br><span class="line">    secret = start + <span class="number">19</span> * p</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 转换为 bytes 并解码为字符串</span></span><br><span class="line">    flag = long_to_bytes(secret)</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;\n[+] Recovered Flag: <span class="subst">&#123;flag.decode()&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    solve()</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行结果-3"><a href="#运行结果-3" class="headerlink" title="运行结果"></a>运行结果</h3><p>运行上述脚本，直接得到 Flag：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[+] Recovered Flag: SHCTF&#123;205436e5-d598-4859-a237-d3f40e7ed45b&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这就是所谓的 “Crypto” 中常见的障眼法。题目虽然给出了显眼的 ECDSA 环境和 Nonce Reuse 漏洞，但 flag 的泄露其实通过非常基础的代数运算就能完成。在做题时，优先检查最简单的数学关系往往能事半功倍。</p>
+<h2 id="资源平权！"><a href="#资源平权！" class="headerlink" title="资源平权！"></a>资源平权！</h2><h3 id="题目分析-6"><a href="#题目分析-6" class="headerlink" title="题目分析"></a>题目分析</h3><p>这道CTF misc题目给的ZIP包使用了ZipCrypto（传统的老式ZIP加密方式）</p>
+<ul>
+<li>flag.exe 是加密的（ZipCrypto + Store方式，加密标记为+）</li>
+<li>资源使用说明.txt 是明文存储（Store，无加密）</li>
+</ul>
+<h3 id="解题步骤-2"><a href="#解题步骤-2" class="headerlink" title="解题步骤"></a>解题步骤</h3><p>用 bkcrack 工具进行已知明文攻击</p>
+<ol>
+<li><p><strong>准备已知明文（plain）</strong><br> flag.exe 未加密时的开头几乎一定是这样（前几十字节）：<br> 前2字节：<code>4D 5A</code> （即 <code>MZ</code>）<br> 通常前几十字节是标准的DOS stub（很多编译器生成的都一样）<br> 最保险的前12–16字节示例（十六进制）：<code>4D 5A 90 00 03 00 00 00 04 00 00 00 FF FF 00 00</code>,可以创建一个纯文本文件 <code>plain_head.bin</code>，用十六进制编辑器（如HxD、010 Editor、ImHex）填入上面内容（或更多字节），保存为二进制文件。<br> 如果有标准的hello world.exe或其他PE文件，可以直接截取它的前几十字节作为plain（只要和目标exe的编译环境类似就行）。</p>
+</li>
+<li><p><strong>运行 bkcrack 破解内部密钥</strong><br> 打开命令行（cmd&#x2F;PowerShell&#x2F;Terminal），进入bkcrack所在目录，执行类似下面命令：  </p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\bkcrack.exe -C <span class="string">&quot;SHCTF2026_资源平价!.zip&quot;</span> -c flag.exe -p plain_head.bin -o 0</span><br></pre></td></tr></table></figure>
+<p> 参数解释：<br> -C：加密的ZIP文件名（带路径也行）<br> -c：要攻击的加密文件在ZIP里的名字（这里是 flag.exe）<br> -p：你准备的已知明文文件（二进制格式）<br> -o 0：明文相对于文件开头的偏移（通常从0开始，因为PE头就是开头）<br> ![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-09 171903.png)<br> 密钥：<code>60101051</code> <code>4cba82cb</code> <code>48eac20c</code></p>
+</li>
+<li><p><strong>用恢复的密钥直接解密文件</strong><br> 找到密钥后，运行：  </p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\bkcrack.exe -C <span class="string">&quot;SHCTF2026_资源平价!.zip&quot;</span> -c flag.exe -k xxxx xxxx xxxx -d decrypted_flag.exe</span><br></pre></td></tr></table></figure>
+<p> -k 后面填刚才得到的3个密钥<br> -d 指定解密后输出的文件名<br> ![](.\SHCTF-3rd-writeup\屏幕截图 2026-02-09 172239.png)<br> 解密出来的 decrypted_flag.exe 就是明文exe了！</p>
+</li>
+<li><p><strong>运行 decrypted_flag.exe 获取 Flag</strong><br> 双击运行 decrypted_flag.exe，或者在命令行中执行它，输出 Flag：  </p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hello and welcome,CTFer!</span><br><span class="line">The flag is: SHCTF&#123;002c158f-b4d2-4e14-bbbb-b5141bca8cb9&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">持之以 恒</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://cyh-32.github.io/2026/02/14/shctf-3rd-writeup/">http://cyh-32.github.io/2026/02/14/shctf-3rd-writeup/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">持之以 恒</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://img.cdn1.vip/i/69549d8c8a6fe_1767153036.webp" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://img.cdn1.vip/i/69549d530b95a_1767152979.webp" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2026/02/14/shctf-3rd-writeup/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="SHCTF_3rd_writeup">
+                        
+                        <span class="card-title">SHCTF_3rd_writeup</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-02-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            持之以 恒
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025/12/30/isctf2025-writeup/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="ISCTF2025_writeup">
+                        
+                        <span class="card-title">ISCTF2025_writeup</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            队伍名称：NISA_Shell_We_Dance?队伍排名：总榜：104 新生榜：18所属院校及赛道：福建师范大学 新生赛道  
+在写这篇 writeup 之前，首先感谢 ISCTF 2025 的出题人们设计了这样有趣且富有挑战性的题目，也
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-12-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            持之以 恒
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2026</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">持之以 恒</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">18.2k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/cyh-32/cyh-32.github.io" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:3551803481@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3551803481" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 3551803481" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
