@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="关于, 博客">
+    <meta name="keywords" content="一题流量分析, 博客">
     <meta name="description" content="追求不凡，永不止步">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>关于 | 持之以 恒的博客</title>
+    <title>一题流量分析 | 持之以 恒的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">about</h1>
+                    <h1 class="description center-align post-title">一题流量分析</h1>
                 </div>
             </div>
         </div>
@@ -429,9 +429,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/CTF-MISC/">
+                                <span class="chip bg-color">CTF_MISC</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -443,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-12-31
+                    2026-02-18
                 </div>
                 
 
@@ -452,14 +456,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    907
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -484,7 +488,69 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="陇剑杯-2021-webshell-writeup"><a href="#陇剑杯-2021-webshell-writeup" class="headerlink" title="[陇剑杯 2021]webshell writeup"></a>[陇剑杯 2021]webshell writeup</h1><h2 id="问1"><a href="#问1" class="headerlink" title="问1"></a>问1</h2><p>题目描述：  </p>
+<p>单位网站被黑客挂马，请您从流量中分析出webshell，进行回答：**黑客登录系统使用的密码是_。**得到的flag请使用NSSCTF{}格式提交。</p>
+<p>一般来说，登录系统都有以下特征：</p>
+<ol>
+<li>登录成功状态码为200</li>
+<li>用post方式登录</li>
+<li>一般登录页面是login</li>
+</ol>
+<p>通过以上来进行过滤跟踪，可以发现登录成功的post</p>
+<p><img src="https://img.cdn1.vip/i/6995b9364a184_1771419958.webp"></p>
+<p>再进行url解码</p>
+<p><img src="https://img.cdn1.vip/i/6995b95f0a20f_1771419999.png"></p>
+<p><strong>flag:</strong><code>NSSCTF{admin123!@#}</code></p>
+<h2 id="问2"><a href="#问2" class="headerlink" title="问2"></a>问2</h2><p>题目描述：</p>
+<p>单位网站被黑客挂马，请您从流量中分析出webshell，进行回答：<strong>黑客修改了一个日志文件，文件的绝对路径为_____________。</strong>（请确认绝对路径后再提交）。得到的flag请使用NSSCTF{}格式提交。</p>
+<p>一般日志文件是后缀<code>.log</code>的文件，过滤<code>.log</code></p>
+<p><img src="https://img.cdn1.vip/i/6995b97f3aa4e_1771420031.webp"></p>
+<p>发现路径<code>data/Runtime/Logs/21_08_07.log</code>，但是这个还不是绝对路径，再进行寻找</p>
+<p><img src="https://img.cdn1.vip/i/6995b99ee3500_1771420062.webp"></p>
+<p><strong>flag:</strong><code>NSSCTF{/var/www/html1/1.php/data/Runtime/Logs/21_08_07.log}</code></p>
+<h2 id="问3"><a href="#问3" class="headerlink" title="问3"></a>问3</h2><p>题目描述：</p>
+<p>单位网站被黑客挂马，请您从流量中分析出webshell，进行回答：**黑客获取webshell之后，权限是__？**得到的flag请使用NSSCTF{}格式提交。</p>
+<p>黑客获取webshell后，大概率会用<code>id</code>或<code>whoani</code>来查看权限</p>
+<p>所以我们可以通过过滤包含whoami字样的流量包来查找</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http contains <span class="string">&quot;whoami&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.cdn1.vip/i/6995b9bfa0e8b_1771420095.webp"></p>
+<p>两个流量包都post了whoami指令</p>
+<p>但是追踪第一个流量包发现状态码是404，无效</p>
+<p>再对第二个流量包追踪发现状态码为200，在下方还可以发现一个<code>www-data</code>，这是一个比较常见的PHP网站权限名</p>
+<p><img src="https://img.cdn1.vip/i/6995ba10e8e08_1771420176.webp"></p>
+<p><strong>flag:</strong><code>NSSCTF{www-data}</code></p>
+<h2 id="问4"><a href="#问4" class="headerlink" title="问4"></a>问4</h2><p>题目描述：</p>
+<p>单位网站被黑客挂马，请您从流量中分析出webshell，进行回答：<strong>黑客写入的webshell文件名是_____________。</strong>(请提交带有文件后缀的文件名，例如x.txt)。得到的flag请使用NSSCTF{}格式提交。</p>
+<p>一般写入文件应该是用POST方法，所以<code>http.request.method==&quot;POST&quot;</code>过滤流量</p>
+<p><img src="https://img.cdn1.vip/i/6995ba50bf53e_1771420240.webp"></p>
+<p>发现后面全是1.php，追踪最后一个index.php，发现上传的的确是1.php</p>
+<p><img src="https://img.cdn1.vip/i/6995ba6c09e16_1771420268.webp"></p>
+<p><strong>flag:</strong><code>NSSCTF{1.php}</code></p>
+<h2 id="问5"><a href="#问5" class="headerlink" title="问5"></a>问5</h2><p>题目描述：</p>
+<p>单位网站被黑客挂马，请您从流量中分析出webshell，进行回答：<strong>黑客上传的代理工具客户端名字是_____________。</strong>（如有字母请全部使用小写）。得到的flag请使用NSSCTF{}格式提交。</p>
+<p>我们可以由上一题发现可以发现写入木马的内容</p>
+<p><img src="https://img.cdn1.vip/i/6995ba9c2f641_1771420316.webp"></p>
+<p><img src="https://img.cdn1.vip/i/6995babf04dc7_1771420351.png"></p>
+<p>直接搜aaa，追踪后发现有<code>frpc.ini</code>，frp是一款用于内网穿透的高性能反向代理应用，frps是服务端，frpc是客户端。</p>
+<p><img src="https://img.cdn1.vip/i/6995bad98facd_1771420377.webp"></p>
+<p><strong>flag:</strong><code>NSSCTF{frpc}</code></p>
+<h2 id="问6"><a href="#问6" class="headerlink" title="问6"></a>问6</h2><p>题目描述：</p>
+<p>单位网站被黑客挂马，请您从流量中分析出webshell，进行回答：**黑客代理工具的回连服务端IP是_____________。**得到的flag请使用NSSCTF{}格式提交。</p>
+<p>在前面的题目中，我们已经发现服务器被webshell入侵的痕迹，具体表现为用POST请求上传了一个1.php脚本，并且发现存在 <code>frpc</code> 或类似内网穿透工具的二进制文件上传。</p>
+<p>过滤器：<code>http contains &quot;1.php&quot;</code></p>
+<p>逐一追踪http</p>
+<p><img src="https://img.cdn1.vip/i/6995baf8a6ee2_1771420408.webp"></p>
+<p>发现长度适合的可疑的16进制数据</p>
+<p><img src="https://img.cdn1.vip/i/6995bb326845f_1771420466.webp"></p>
+<p><img src="https://img.cdn1.vip/i/6995bb91c217d_1771420561.webp"></p>
+<p><strong>flag：</strong><code>NSSCTF{192.168.239.123}</code></p>
+<h2 id="问7"><a href="#问7" class="headerlink" title="问7"></a>问7</h2><p>题目描述：</p>
+<p>单位网站被黑客挂马，请您从流量中分析出webshell，进行回答：<strong>黑客的socks5的连接账号、密码是________。</strong>（中间使用#号隔开，例如admin#passwd）。得到的flag请使用NSSCTF{}格式提交。</p>
+<p>答案就在上一题那里</p>
+<p><img src="https://img.cdn1.vip/i/6995bbae1d528_1771420590.webp"></p>
+<p><strong>flag:</strong><code>NSSCTF{0HDFt16cLQJ#JTN276Gp}</code></p>
+
                 
             </div>
             <hr/>
@@ -510,7 +576,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cyh-32.github.io/about/index-1.html">http://cyh-32.github.io/about/index-1.html</a>
+                    <a href="http://cyh-32.github.io/2026/02/18/yi-ti-liu-liang-fen-xi/">http://cyh-32.github.io/2026/02/18/yi-ti-liu-liang-fen-xi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -547,7 +613,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/CTF-MISC/">
+                                    <span class="chip bg-color">CTF_MISC</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -720,13 +790,13 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/about/index-1.html">
+                <a href="/2026/02/18/yi-ti-liu-liang-fen-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="about">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="一题流量分析">
                         
-                        <span class="card-title">about</span>
+                        <span class="card-title">一题流量分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -737,7 +807,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-12-31
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-02-18
                             </span>
                         <span class="publish-author">
                             
@@ -749,22 +819,30 @@
                 </div>
 
                 
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CTF-MISC/">
+                        <span class="chip bg-color">CTF_MISC</span>
+                    </a>
+                    
+                </div>
+                
             </div>
         </div>
         
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/about/index-1.html">
+                <a href="/2026/02/14/shctf-3rd-writeup/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="about">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="SHCTF_3rd_writeup">
                         
-                        <span class="card-title">about</span>
+                        <span class="card-title">SHCTF_3rd_writeup</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -775,7 +853,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-12-31
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-02-14
                             </span>
                         <span class="publish-author">
                             
@@ -785,7 +863,14 @@
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/writeup/">
+                        <span class="chip bg-color">writeup</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
