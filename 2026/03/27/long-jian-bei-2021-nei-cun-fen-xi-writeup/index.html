@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 博客">
+    <meta name="keywords" content="陇剑杯-2021-内存分析 Writeup, 博客">
     <meta name="description" content="追求不凡，永不止步">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | My_blog</title>
+    <title>陇剑杯-2021-内存分析 Writeup | My_blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">陇剑杯-2021-内存分析 Writeup</h1>
                 </div>
             </div>
         </div>
@@ -429,9 +429,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/CTF-MISC/">
+                                <span class="chip bg-color">CTF_MISC</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -443,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-12-30
+                    2026-03-27
                 </div>
                 
 
@@ -452,14 +456,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    75
+                    697
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -484,19 +488,60 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+                <p>也不知道要写啥，干脆就写一些印象比较深刻的题目的wp吧</p>
+<h2 id="题目信息"><a href="#题目信息" class="headerlink" title="题目信息"></a>题目信息</h2><ul>
+<li>题型：MISC &#x2F; 内存取证</li>
+<li>附件：<code>Target.vmem</code> <code>tips.txt</code></li>
+<li>题目一：虚拟机的密码是_____________。（密码中为flag{xxxx}，含有空格，提交时不要去掉）。</li>
+<li>题目二：虚拟机中有一个某品牌手机的备份文件，文件里的图片里的字符串为_____________。（解题过程中需要用到上一题答案中flag{}内的内容进行处理。本题的格式也是flag{xxx}，含有空格，提交时不要去掉）。</li>
+</ul>
+<h2 id="题目一思路"><a href="#题目一思路" class="headerlink" title="题目一思路"></a>题目一思路</h2><p>内存取证中基本上查密码用Volatility的hashdump命令就可以出来了，我这边用的是Lovemem Lite(集成了Vol2和Vol3)，在加载镜像的时候就已经出来了</p>
+<p><img src="https://img.cdn1.vip/i/69c68baea2d50_1774619566.webp"></p>
+<p><strong>flag:</strong><code>flag{W31C0M3 T0 THiS 34SY F0R3NSiCX}</code></p>
+<h2 id="题目二整体思路"><a href="#题目二整体思路" class="headerlink" title="题目二整体思路"></a>题目二整体思路</h2><p>这题的关键是：内存里存在一份华为备份相关数据。流程可以分成四步：</p>
+<ol>
+<li>在内存中定位华为备份痕迹。</li>
+<li>从内存中 carve 出 ZIP 条目，恢复 <code>info.xml</code>、<code>picture.xml</code>、<code>images0.tar.enc</code>。</li>
+<li>使用 <code>kobackupdec</code> 解密备份，得到可读的 <code>images0.tar</code>。</li>
+<li>解包图片目录，定位 <code>Pictures/flag/</code>，读取 flag 图片内容。</li>
+</ol>
+<hr>
+<h2 id="1-定位内存中的备份痕迹"><a href="#1-定位内存中的备份痕迹" class="headerlink" title="1. 定位内存中的备份痕迹"></a>1. 定位内存中的备份痕迹</h2><p>用Vol的命令filescan来扫描进程缓存的文件，然后查看文件，尤其是在桌面的文件，稍微翻两下就看到</p>
+<p><img src="https://img.cdn1.vip/i/69c68bcb881ed_1774619595.webp"></p>
+<h2 id="2-从内存中恢复备份核心文件"><a href="#2-从内存中恢复备份核心文件" class="headerlink" title="2. 从内存中恢复备份核心文件"></a>2. 从内存中恢复备份核心文件</h2><p>使用dumpfile命令来进行提取，提取关键条目。</p>
+<p><code>dumpfiles -Q 0x000000007d8c7d10</code></p>
+<p>Lovemem Lite中也可以直接右键提取</p>
+<p><img src="https://img.cdn1.vip/i/69c68c3912514_1774619705.webp"></p>
+<p>会导出以下文件：</p>
+<p><img src="https://img.cdn1.vip/i/69c68c732b99f_1774619763.png"></p>
+<p>获得的文件有.img和.dat，将.dat修改后缀为.exe，即对应HUAWEI P40_2021-aa-bb xx.yy.zz.exe文件，然后使用rar或7zip软件解压缩。</p>
+<h2 id="3-调用-kobackupdec-进行解密"><a href="#3-调用-kobackupdec-进行解密" class="headerlink" title="3. 调用 kobackupdec 进行解密"></a>3. 调用 kobackupdec 进行解密</h2><p>kobackupdec下载地址：<a target="_blank" rel="noopener" href="https://github.com/RealityNet/kobackupdec">https://github.com/RealityNet/kobackupdec</a> （python工具）</p>
+<p>参考用法（README 中给出）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python kobackupdec.py -vvv [password] <span class="string">&quot;HUAWEI P40_2021-aa-bb xx.yy.zz&quot;</span> decrypted_output</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>可以看到 <code>tips.txt</code> 给了一个关键提示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">no space but underline</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>所以password需要使用上一题的flag并且空格换成下划线：<code>W31C0M3_T0_THiS_34SY_F0R3NSiCX</code></p>
+<p><img src="https://img.cdn1.vip/i/69c68ca588184_1774619813.webp"></p>
+<p>本题对应的最终解密结果的文件夹其中已确认存在：</p>
+<p><code>/storage/MediaTar/images/images0.tar</code></p>
+<p>说明 <code>.enc</code> 已成功还原成可解包 tar。</p>
+<h2 id="4-解包图片并定位-flag-文件"><a href="#4-解包图片并定位-flag-文件" class="headerlink" title="4. 解包图片并定位 flag 文件"></a>4. 解包图片并定位 flag 文件</h2><p>在最终结果中可以看到 flag 图片路径：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/storage/MediaTar/images/Pictures/flag/mmexport1630152510463.png</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>该文件即题目最终载体。</p>
+<h2 id="5-得到-flag"><a href="#5-得到-flag" class="headerlink" title="5. 得到 flag"></a>5. 得到 flag</h2><p><img src="https://img.cdn1.vip/i/69c68cce5e7e8_1774619854.png"></p>
+<p>最终 flag 为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;TH4NK Y0U FOR DECRYPTING MY DATA&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<hr>
+<h2 id="复现要点总结"><a href="#复现要点总结" class="headerlink" title="复现要点总结"></a>复现要点总结</h2><ol>
+<li>先在 <code>Target.vmem</code> 中定位华为备份特征字段</li>
+<li>用Vol对文件进行提取</li>
+<li>喂给 <code>kobackupdec</code>，密码使用第一题的flag把空格换成下滑线</li>
+<li>在解密后的 <code>storage/MediaTar/images/Pictures/flag/</code> 下获取 flag 图片</li>
+</ol>
 
                 
             </div>
@@ -523,7 +568,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cyh-32.github.io/2025/12/30/hello-world/">http://cyh-32.github.io/2025/12/30/hello-world/</a>
+                    <a href="http://cyh-32.github.io/2026/03/27/long-jian-bei-2021-nei-cun-fen-xi-writeup/">http://cyh-32.github.io/2026/03/27/long-jian-bei-2021-nei-cun-fen-xi-writeup/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -560,7 +605,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/CTF-MISC/">
+                                    <span class="chip bg-color">CTF_MISC</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -728,54 +777,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2025/12/30/first-blog/">
+                <a href="/2026/03/27/long-jian-bei-2021-nei-cun-fen-xi-writeup/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="first blog">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="陇剑杯-2021-内存分析 Writeup">
                         
-                        <span class="card-title">first blog</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-12-30
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            持之以 恒
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2025/12/30/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">陇剑杯-2021-内存分析 Writeup</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -786,7 +799,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-12-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-27
                             </span>
                         <span class="publish-author">
                             
@@ -797,6 +810,59 @@
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CTF-MISC/">
+                        <span class="chip bg-color">CTF_MISC</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2026/02/18/yi-ti-liu-liang-fen-xi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="一题流量分析">
+                        
+                        <span class="card-title">一题流量分析</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-02-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            持之以 恒
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CTF-MISC/">
+                        <span class="chip bg-color">CTF_MISC</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
