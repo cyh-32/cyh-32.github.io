@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 博客">
+    <meta name="keywords" content="Steganography Writeup, 博客">
     <meta name="description" content="追求不凡，永不止步">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | My_blog</title>
+    <title>Steganography Writeup | My_blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">Steganography Writeup</h1>
                 </div>
             </div>
         </div>
@@ -429,9 +429,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/CTF-MISC/">
+                                <span class="chip bg-color">CTF_MISC</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -443,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-12-30
+                    2026-03-31
                 </div>
                 
 
@@ -452,14 +456,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    75
+                    983
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -484,19 +488,37 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给出一个名为 <code>steganography.png</code> 的图片文件。图片无法正常打开，也无法拖入 Stegsolve 等工具中进行分析。需要从中提取隐藏的 flag。</p>
+<h2 id="解题思路与步骤"><a href="#解题思路与步骤" class="headerlink" title="解题思路与步骤"></a>解题思路与步骤</h2><h3 id="1-PNG-文件结构修复-IDAT-块异常"><a href="#1-PNG-文件结构修复-IDAT-块异常" class="headerlink" title="1. PNG 文件结构修复 (IDAT 块异常)"></a>1. PNG 文件结构修复 (IDAT 块异常)</h3><p>首先，尝试将图片拖入 Stegsolve 时会报错。使用十六进制编辑器 (如 010 Editor) 或 Python 脚本检查图片的二进制结构，发现 PNG 的区块 (Chunks) 链被破坏。</p>
+<p>具体来说，在正常的 PNG 文件中，一个数据块的结尾 (包含 4 字节的 CRC 校验码) 应该紧接着下一个数据块的开头 (4 字节的长度字段)。但在这个文件中，多个 <code>IDAT</code> 数据块之间被恶意插入了额外的字节，导致图片解析器因为遇到未知的长度和类型而无法继续解析。</p>
+<p>通过脚本提取出这些被插入的额外字节，并在原文件中将它们删除。同时，为确保修复后的文件严格符合 PNG 标准，可以顺便重新计算并修复所有块的 CRC 验证值。<br>修复后得到一个正常的 PNG 文件 <code>fixed2.png</code>，现在它可以被 Stegsolve 正常打开了。</p>
+<p><strong>顺便一提：修复过程中提取出的多余字节为:</strong><br><code>a61ade</code> <code>6428b2</code> <code>1091025592d7</code> <code>6c7f2c</code> <code>bcd754</code> <code>a82fd7</code><br>组合起来：<code>a61ade6428b21091025592d76c7f2cbcd754a82fd7</code><br><em>(这在后续步骤中没有用到，但属于常见的隐写思路。)</em></p>
+<h3 id="2-LSB-隐写提取-ZIP"><a href="#2-LSB-隐写提取-ZIP" class="headerlink" title="2. LSB 隐写提取 ZIP"></a>2. LSB 隐写提取 ZIP</h3><p>图片修复后使用 Stegsolve 打开，利用 LSB (最低有效位) 隐写分析功能，在勾选了Red、Green和Blue的0通道后发现有<code>PK</code>（50 4b 03 04）和flag.zip的16进制数据，使用 <code>Save Bin</code> 提取 0 通道的数据，提取出了一个 ZIP 压缩包 <code>flag.zip</code>。</p>
+<p>注意：使用工具提取出的文件通常包含了原文件末尾的大量垃圾数据。因为真正的 ZIP 文件结尾以 <code>50 4b 05 06</code> (EOCD 标志) 结束，可以使用脚本将其后面的冗余数据截断，进而得到一个结构完全正常的 <code>flag_fixed.zip</code>。</p>
+<h3 id="3-ZIP-伪层叠与-CRC32-爆破"><a href="#3-ZIP-伪层叠与-CRC32-爆破" class="headerlink" title="3. ZIP 伪层叠与 CRC32 爆破"></a>3. ZIP 伪层叠与 CRC32 爆破</h3><p>解压修复后的 <code>flag_fixed.zip</code>，发现里面包含了 7 个同样需要密码的压缩包：</p>
+<ul>
+<li><code>flag.zip</code></li>
+<li><code>pass1.zip</code> ~ <code>pass6.zip</code></li>
+</ul>
+<p>查看 <code>pass1</code> 到 <code>pass6</code> 这 6 个压缩包的属性，发现里面的明文文件(<code>data1.txt</code> ~ <code>data6.txt</code>)的 <strong>大小全部仅有 4 个字节</strong> 。<br>对于这种加密压缩包已知明文极短的情况，可以直接利用明文的 CRC32 校验值进行爆破，无需密码即可知道明文内容。</p>
+<p>通过 Python 脚本组合所有可打印的 ASCII 字符，对这 6 个 4字节长度文件的 CRC32 进行碰撞运算，结果如下：</p>
+<ul>
+<li><code>pass1.zip</code> (CRC: <code>0xce70d424</code>) -&gt; 爆破结果: <code>pass</code></li>
+<li><code>pass2.zip</code> (CRC: <code>0xf90c8a70</code>) -&gt; 爆破结果: <code>is</code></li>
+<li><code>pass3.zip</code> (CRC: <code>0xff3fe4bb</code>) -&gt; 爆破结果: <code>c1!x</code></li>
+<li><code>pass4.zip</code> (CRC: <code>0x242a5387</code>) -&gt; 爆破结果: <code>xtLf</code></li>
+<li><code>pass5.zip</code> (CRC: <code>0x9a27098e</code>) -&gt; 爆破结果: <code>%fXY</code></li>
+<li><code>pass6.zip</code> (CRC: <code>0xd3f6df9f</code>) -&gt; 爆破结果: <code>PkaA</code></li>
+</ul>
+<p>拼接后得到重要提示（即最终密码）：<br><strong><code>pass is c1!xxtLf%fXYPkaA</code></strong></p>
+<h3 id="4-零宽字符隐写解密"><a href="#4-零宽字符隐写解密" class="headerlink" title="4. 零宽字符隐写解密"></a>4. 零宽字符隐写解密</h3><p>利用获取到的密码 <code>c1!xxtLf%fXYPkaA</code> 解压加密的 <code>flag.zip</code>，里面包含了一个 <code>flag.txt</code> 文件。</p>
+<p>用文本编辑器打开 <code>flag.txt</code>，发现里面只有似乎是常规的一段话 <code>flag is here</code>。<br>但实际上该文本内隐藏了不可见的“零宽字符”。利用脚本对文本进行读取遍历，分析发现含有大量的：</p>
+<ul>
+<li>零宽空格 (<code>\u200b</code>) </li>
+<li>零宽不连字 (<code>\u200c</code>)</li>
+</ul>
+<p>这是一种典型的<strong>零宽隐写 (Zero-Width Steganography)</strong>。由于只存在两种不可见字符，将其理解为二进制串。<br>将 <code>\u200b</code> 替换为 <code>0</code>，将 <code>\u200c</code> 替换为 <code>1</code>，把整段编码转换为二进制字符串后，按每 8 位转换为对应的 ASCII 字符，成功还原出暗藏的 flag。</p>
+<h3 id="最终-Flag"><a href="#最终-Flag" class="headerlink" title="最终 Flag"></a>最终 Flag</h3><p><strong><code>dart{bf4100d9-cc8d-48f6-a095-54cbfad189e1}</code></strong></p>
 
                 
             </div>
@@ -523,7 +545,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cyh-32.github.io/2025/12/30/hello-world/">http://cyh-32.github.io/2025/12/30/hello-world/</a>
+                    <a href="http://cyh-32.github.io/2026/03/31/steganography-writeup/">http://cyh-32.github.io/2026/03/31/steganography-writeup/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -560,7 +582,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/CTF-MISC/">
+                                    <span class="chip bg-color">CTF_MISC</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -728,54 +754,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2025/12/30/first-blog/">
+                <a href="/2026/03/31/steganography-writeup/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="first blog">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Steganography Writeup">
                         
-                        <span class="card-title">first blog</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-12-30
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            持之以 恒
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2025/12/30/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">Steganography Writeup</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -786,7 +776,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-12-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-31
                             </span>
                         <span class="publish-author">
                             
@@ -797,6 +787,59 @@
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CTF-MISC/">
+                        <span class="chip bg-color">CTF_MISC</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2026/03/27/long-jian-bei-2021-nei-cun-fen-xi-writeup/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="陇剑杯-2021-内存分析 Writeup">
+                        
+                        <span class="card-title">陇剑杯-2021-内存分析 Writeup</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            持之以 恒
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CTF-MISC/">
+                        <span class="chip bg-color">CTF_MISC</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
