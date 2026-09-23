@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>ISCTF2025_writeup | My_blog</title>
+    <title>ISCTF2025_writeup | cyh_blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -41,9 +41,9 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="https://img.cdn1.vip/i/695499951457a_1767152021.webp" class="logo-img" alt="LOGO">
+                    <img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/CH0228_spr_03_new.jpg" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">My_blog</span>
+                    <span class="logo-span">cyh_blog</span>
                 </a>
             </div>
             
@@ -140,9 +140,9 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="https://img.cdn1.vip/i/695499951457a_1767152021.webp" class="logo-img circle responsive-img">
+        <img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/CH0228_spr_03_new.jpg" class="logo-img circle responsive-img">
         
-        <div class="logo-name">My_blog</div>
+        <div class="logo-name">cyh_blog</div>
         <div class="logo-desc">
             
             追求不凡，永不止步
@@ -310,7 +310,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -629,17 +629,17 @@
 <p>此时便思考能否通过斜体字来绕过</p>
 <p>构造<code>&#123;&#123; 𝑜𝑝𝑒𝑛("/flag").𝑟𝑒𝑎𝑑() &#125;&#125;</code><br>此时成功获得flag</p>
 <h2 id="who-am-I"><a href="#who-am-I" class="headerlink" title="who am I"></a>who am I</h2><p>首先注册个账号，然后登录，此时看到type&#x3D;1<br>通常admin设为0把值改掉，然后可以以管理员权限进去<br>可以看到几个重要文件此时关注dash<br>此时构造payload<br>GET &#x2F;operate?username&#x3D;app&amp;password&#x3D;jinja_loader.searchpath&amp;confirm_password&#x3D;[‘&#x2F;‘]<br>利用username和password来对渲染进行破坏</p>
-<h2 id="REVERSE–ezzz-math（Z3"><a href="#REVERSE–ezzz-math（Z3" class="headerlink" title="REVERSE–ezzz_math（Z3)"></a>REVERSE–ezzz_math（Z3)</h2><p>查壳-&gt;无壳-&gt;用IDA-&gt;打开main 函数<br>Flag23 个字符，异或 0xC 解密<br><img src="https://img.cdn1.vip/i/695407c452023_1767114692.webp"><br>进入sub_40100 函数（23 个线性方程组）<br><img src="https://img.cdn1.vip/i/6954084267712_1767114818.webp"><br><img src="https://img.cdn1.vip/i/69540879d4e84_1767114873.webp"></p>
-<h2 id="PWN—来签个到吧"><a href="#PWN—来签个到吧" class="headerlink" title="PWN—来签个到吧"></a>PWN—来签个到吧</h2><p>打开靶机-&gt;附件IDA 打开<br><img src="https://img.cdn1.vip/i/695408a2da5f7_1767114914.webp"></p>
+<h2 id="REVERSE–ezzz-math（Z3"><a href="#REVERSE–ezzz-math（Z3" class="headerlink" title="REVERSE–ezzz_math（Z3)"></a>REVERSE–ezzz_math（Z3)</h2><p>查壳-&gt;无壳-&gt;用IDA-&gt;打开main 函数<br>Flag23 个字符，异或 0xC 解密<br><img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%9B%BE%E7%89%871.jpg"><br>进入sub_40100 函数（23 个线性方程组）<br><img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/20260923203032.png"><br><img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%9B%BE%E7%89%872.jpg"></p>
+<h2 id="PWN—来签个到吧"><a href="#PWN—来签个到吧" class="headerlink" title="PWN—来签个到吧"></a>PWN—来签个到吧</h2><p>打开靶机-&gt;附件IDA 打开<br><img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/20260923203316.png"></p>
 <ol>
 <li>构造 108 字节填充 + 返回地址 0xaddaaaaa</li>
 <li>发送 payload 触发溢出</li>
 <li>接收到”blueshark likes you too!”表示成功</li>
 <li>执行 cat flag 获取 flag</li>
 </ol>
-<p><img src="https://img.cdn1.vip/i/695408db8bfa6_1767114971.webp"></p>
+<p><img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/20260923203421.png"></p>
 <h2 id="病毒分析"><a href="#病毒分析" class="headerlink" title="病毒分析"></a>病毒分析</h2><p>XOR 混淆（第二阶段）<br>解密第三阶段<br>UPX 压缩&#x2F;壳（第三阶段）<br>最终核心恶意代码  </p>
-<h3 id="1-海莲花"><a href="#1-海莲花" class="headerlink" title="1.海莲花"></a>1.海莲花</h3><p><img src="https://img.cdn1.vip/i/6954090ac60d1_1767115018.webp"></p>
+<h3 id="1-海莲花"><a href="#1-海莲花" class="headerlink" title="1.海莲花"></a>1.海莲花</h3><p><img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/20260923203538.png"></p>
 <ol>
 <li><p>APT3（海莲花）最喜欢把 Drop 出来的 malware 放到 System32并伪装成系统组件（无扩展名或修改名）。</p>
 </li>
@@ -673,13 +673,13 @@
 <li><p>使用 UPX 官方工具（upx -l）可成功识别并解压。</p>
 </li>
 </ul>
-<h2 id="OSINT-2"><a href="#OSINT-2" class="headerlink" title="OSINT-2"></a>OSINT-2</h2><p><img src="https://img.cdn1.vip/i/6954097edb01b_1767115134.webp"><br>观察发现这座标志性大桥</p>
+<h2 id="OSINT-2"><a href="#OSINT-2" class="headerlink" title="OSINT-2"></a>OSINT-2</h2><p><img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%9B%BE%E7%89%873_new.png"><br>观察发现这座标志性大桥</p>
 <p>通过Google搜索得知是曼哈顿大桥（Manhattan Bridge）</p>
-<p>在曼哈顿大桥和另外一座桥中间逛一逛<br><img src="https://img.cdn1.vip/i/695409a7dab72_1767115175.webp"><br><img src="https://img.cdn1.vip/i/69540a3cab6e8_1767115324.webp"><br>就可以发现原图了</p>
-<h2 id="OSINT-1"><a href="#OSINT-1" class="headerlink" title="OSINT-1"></a>OSINT-1</h2><p><img src="https://img.cdn1.vip/i/69540a7158123_1767115377.webp"><br>说实话第一题要比第二题难<br><img src="https://img.cdn1.vip/i/69540aa2d9821_1767115426.webp"><br>首先先看到这个图书馆，墙壁上的字推出在中国的某高校，结合出题人是福建理工大学的，先去看看理工的图书馆，发现不是，再去看理工旁边的大学，首先排除福师大，在福大发现目标</p>
+<p>在曼哈顿大桥和另外一座桥中间逛一逛<br><img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%9B%BE%E7%89%874.jpg"><br><img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%9B%BE%E7%89%875_new.png"><br>就可以发现原图了</p>
+<h2 id="OSINT-1"><a href="#OSINT-1" class="headerlink" title="OSINT-1"></a>OSINT-1</h2><p><img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%9B%BE%E7%89%876_new.png"><br>说实话第一题要比第二题难<br><img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%9B%BE%E7%89%877_new.png"><br>首先先看到这个图书馆，墙壁上的字推出在中国的某高校，结合出题人是福建理工大学的，先去看看理工的图书馆，发现不是，再去看理工旁边的大学，首先排除福师大，在福大发现目标</p>
 <p>只不过有点奇怪的是按照格子数的准确点不是答案，以至于需要把广场上的格子都点一遍</p>
 <h2 id="guess"><a href="#guess" class="headerlink" title="guess"></a>guess</h2><p>二分法</p>
-<h2 id="阿利维亚的传说"><a href="#阿利维亚的传说" class="headerlink" title="阿利维亚的传说"></a>阿利维亚的传说</h2><p><img src="https://img.cdn1.vip/i/69540abf63609_1767115455.png"></p>
+<h2 id="阿利维亚的传说"><a href="#阿利维亚的传说" class="headerlink" title="阿利维亚的传说"></a>阿利维亚的传说</h2><p><img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/20260923205115.png"></p>
 <p>首先打开WPS或者Word里显示隐藏文字的功能，有隐藏文字</p>
 <p>找到flag1</p>
 <p>再用foremost从图片中提取出一个zip压缩包，用Advanced Archive Password Recovery进行暴力破解，得到口令 : 8652，得到flag3</p>
@@ -688,7 +688,7 @@
 <p>R&#x3D;iytY</p>
 <p>U&#x3D;nGFo</p>
 <p>E&#x3D;diou</p>
-<p><img src="https://img.cdn1.vip/i/69540ae44d784_1767115492.webp"><br>用StegSolve打开图片，观察到图片中泰坦的三把钥匙颜色刚好对应red、green、blue，用LSB查看三个颜色数据，发现base64</p>
+<p><img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%9B%BE%E7%89%878.png"><br>用StegSolve打开图片，观察到图片中泰坦的三把钥匙颜色刚好对应red、green、blue，用LSB查看三个颜色数据，发现base64</p>
 <p>解码后得到flag2：</p>
 <p>谕言2:</p>
 <p>W&#x3D;Hoeih</p>
@@ -707,9 +707,9 @@
 <p>首先看n.txt，发现是Brainfuck加密，用在线网站解得：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n=</span><br><span class="line"><span class="number">7644027341241571414254539033581025821232019860861753472899980529695625198016019462879314488666454640621660011189097660092595699889727595925351737140047609</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img.cdn1.vip/i/69540b120bf76_1767115538.webp"></p>
+<p><img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%9B%BE%E7%89%879.png"></p>
 <p>然后看c.png，用Binwalk检测发现有两个png图片，提取出来另一个图片，但是没什么用，在010editor里查看原图数据，发现两个图片的尾部有东西，一个是base64</p>
-<p><img src="https://img.cdn1.vip/i/69540b3680a48_1767115574.png"><br>另一个是自定义 Base64 字表</p>
+<p><img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%9B%BE%E7%89%8710.png"><br>另一个是自定义 Base64 字表</p>
 <p>CDABGHEFKLIJOPMNSTQRWXUVabYZefcdijghmnklqropuvstyzwx23016745 +&#x2F;89</p>
 <p>逐字符换回标准 Base64 后得到的标准串为：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dVEUmUQlJQSQCIZQcRVnWXSRETg5IXQ5hAMIRIFQVVQhFhkRCDlVEJF4J3hlaJISYkREQWAQBYMIgocJFwB5KHM0KSEEQEZxIDWSORc=</span><br></pre></td></tr></table></figure>
@@ -759,9 +759,9 @@
 <p>根据异或运算的性质 a &#x3D; c ^ b，我们可以反向计算出 a。</p>
 <p>解密结果为：<br>b’15ctf2025’</p>
 <p>这像是密码</p>
-<p><img src="https://img.cdn1.vip/i/69540b73ca263_1767115635.webp"></p>
+<p><img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%9B%BE%E7%89%8711.png"></p>
 <p>用010editor打开湖心亭.jpg，发现文件尾有多余的数据，是一个压缩包，但是文件头缺少了，补上50 4B 03 04，提取zip，用15ctf2025作为口令解压</p>
-<p><img src="https://img.cdn1.vip/i/69540b9592beb_1767115669.webp"><br>解压得到txt，发现有隐藏字符，结合题意，猜测是snow隐写，密码接着用15ctf2025，得到flag</p>
+<p><img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%9B%BE%E7%89%8712.png"><br>解压得到txt，发现有隐藏字符，结合题意，猜测是snow隐写，密码接着用15ctf2025，得到flag</p>
 <p>end  </p>
 
                 
@@ -958,10 +958,10 @@
                         <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
                     </ul>
                     <div id="alipay">
-                        <img src="https://img.cdn1.vip/i/69549d8c8a6fe_1767153036.webp" class="reward-img" alt="支付宝打赏二维码">
+                        <img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/69549d8c8a6fe_1767153036.webp" class="reward-img" alt="支付宝打赏二维码">
                     </div>
                     <div id="wechat">
-                        <img src="https://img.cdn1.vip/i/69549d530b95a_1767152979.webp" class="reward-img" alt="微信打赏二维码">
+                        <img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/69549d530b95a_1767152979.webp" class="reward-img" alt="微信打赏二维码">
                     </div>
                 </div>
             </div>
@@ -1006,7 +1006,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="SHCTF_3rd_writeup">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="SHCTF_3rd_writeup">
                         
                         <span class="card-title">SHCTF_3rd_writeup</span>
                     </div>
@@ -1051,7 +1051,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="first blog">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="first blog">
                         
                         <span class="card-title">first blog</span>
                     </div>
@@ -1280,7 +1280,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">20.7k</span>&nbsp;字
+                class="white-color">20.9k</span>&nbsp;字
             
             
             
