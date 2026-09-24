@@ -41,7 +41,7 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/CH0228_spr_03_new.jpg" class="logo-img" alt="LOGO">
+                    <img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/CH0228_spr_03_new.jpg" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">cyh_blog</span>
                 </a>
@@ -140,7 +140,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/CH0228_spr_03_new.jpg" class="logo-img circle responsive-img">
+        <img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/CH0228_spr_03_new.jpg" class="logo-img circle responsive-img">
         
         <div class="logo-name">cyh_blog</div>
         <div class="logo-desc">
@@ -456,14 +456,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    907
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    3 分
                 </div>
                 
 
@@ -497,16 +497,16 @@
 <li>一般登录页面是login</li>
 </ol>
 <p>通过以上来进行过滤跟踪，可以发现登录成功的post</p>
-<p>![](<a target="_blank" rel="noopener" href="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://gitee.com/yaoqingdewaner/imgs/raw/master/img/屏幕截图</a> 2026-01-23 221031.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/adsgrrfcff.png"></p>
 <p>再进行url解码</p>
-<p>![](<a target="_blank" rel="noopener" href="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://gitee.com/yaoqingdewaner/imgs/raw/master/img/屏幕截图</a> 2026-01-23 221114.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/jygffdvvv.png"></p>
 <p><strong>flag:</strong><code>NSSCTF{admin123!@#}</code></p>
 <h2 id="问2"><a href="#问2" class="headerlink" title="问2"></a>问2</h2><p>题目描述：</p>
 <p>单位网站被黑客挂马，请您从流量中分析出webshell，进行回答：<strong>黑客修改了一个日志文件，文件的绝对路径为_____________。</strong>（请确认绝对路径后再提交）。得到的flag请使用NSSCTF{}格式提交。</p>
 <p>一般日志文件是后缀<code>.log</code>的文件，过滤<code>.log</code></p>
-<p>![](<a target="_blank" rel="noopener" href="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://gitee.com/yaoqingdewaner/imgs/raw/master/img/屏幕截图</a> 2026-01-23 225108.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/trhrwstjj.png"></p>
 <p>发现路径<code>data/Runtime/Logs/21_08_07.log</code>，但是这个还不是绝对路径，再进行寻找</p>
-<p>![](<a target="_blank" rel="noopener" href="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://gitee.com/yaoqingdewaner/imgs/raw/master/img/屏幕截图</a> 2026-01-23 230243.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/erttyyuuiiii.png"></p>
 <p><strong>flag:</strong><code>NSSCTF{/var/www/html1/1.php/data/Runtime/Logs/21_08_07.log}</code></p>
 <h2 id="问3"><a href="#问3" class="headerlink" title="问3"></a>问3</h2><p>题目描述：</p>
 <p>单位网站被黑客挂马，请您从流量中分析出webshell，进行回答：**黑客获取webshell之后，权限是__？**得到的flag请使用NSSCTF{}格式提交。</p>
@@ -514,41 +514,41 @@
 <p>所以我们可以通过过滤包含whoami字样的流量包来查找</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http contains <span class="string">&quot;whoami&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>![](<a target="_blank" rel="noopener" href="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://gitee.com/yaoqingdewaner/imgs/raw/master/img/屏幕截图</a> 2026-01-23 231032.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/asdfgghhjjjj.png"></p>
 <p>两个流量包都post了whoami指令</p>
 <p>但是追踪第一个流量包发现状态码是404，无效</p>
 <p>再对第二个流量包追踪发现状态码为200，在下方还可以发现一个<code>www-data</code>，这是一个比较常见的PHP网站权限名</p>
-<p>![](<a target="_blank" rel="noopener" href="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://gitee.com/yaoqingdewaner/imgs/raw/master/img/屏幕截图</a> 2026-01-23 231346.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/zxsdcaw.png"></p>
 <p><strong>flag:</strong><code>NSSCTF{www-data}</code></p>
 <h2 id="问4"><a href="#问4" class="headerlink" title="问4"></a>问4</h2><p>题目描述：</p>
 <p>单位网站被黑客挂马，请您从流量中分析出webshell，进行回答：<strong>黑客写入的webshell文件名是_____________。</strong>(请提交带有文件后缀的文件名，例如x.txt)。得到的flag请使用NSSCTF{}格式提交。</p>
 <p>一般写入文件应该是用POST方法，所以<code>http.request.method==&quot;POST&quot;</code>过滤流量</p>
-<p>![](<a target="_blank" rel="noopener" href="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://gitee.com/yaoqingdewaner/imgs/raw/master/img/屏幕截图</a> 2026-02-18 115314.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/hkjbbgdsa.png"></p>
 <p>发现后面全是1.php，追踪最后一个index.php，发现上传的的确是1.php</p>
-<p>![](<a target="_blank" rel="noopener" href="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://gitee.com/yaoqingdewaner/imgs/raw/master/img/屏幕截图</a> 2026-02-18 115010.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/rrffccg.png"></p>
 <p><strong>flag:</strong><code>NSSCTF{1.php}</code></p>
 <h2 id="问5"><a href="#问5" class="headerlink" title="问5"></a>问5</h2><p>题目描述：</p>
 <p>单位网站被黑客挂马，请您从流量中分析出webshell，进行回答：<strong>黑客上传的代理工具客户端名字是_____________。</strong>（如有字母请全部使用小写）。得到的flag请使用NSSCTF{}格式提交。</p>
 <p>我们可以由上一题发现可以发现写入木马的内容</p>
-<p>![](<a target="_blank" rel="noopener" href="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://gitee.com/yaoqingdewaner/imgs/raw/master/img/屏幕截图</a> 2026-02-18 11501.png)</p>
-<p>![](<a target="_blank" rel="noopener" href="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://gitee.com/yaoqingdewaner/imgs/raw/master/img/屏幕截图</a> 2026-02-18 121018.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/efddghjy.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/rtrtfcvbnnf.png"></p>
 <p>直接搜aaa，追踪后发现有<code>frpc.ini</code>，frp是一款用于内网穿透的高性能反向代理应用，frps是服务端，frpc是客户端。</p>
-<p>![](<a target="_blank" rel="noopener" href="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://gitee.com/yaoqingdewaner/imgs/raw/master/img/屏幕截图</a> 2026-02-18 121440.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/23rddf.png"></p>
 <p><strong>flag:</strong><code>NSSCTF{frpc}</code></p>
 <h2 id="问6"><a href="#问6" class="headerlink" title="问6"></a>问6</h2><p>题目描述：</p>
 <p>单位网站被黑客挂马，请您从流量中分析出webshell，进行回答：**黑客代理工具的回连服务端IP是_____________。**得到的flag请使用NSSCTF{}格式提交。</p>
 <p>在前面的题目中，我们已经发现服务器被webshell入侵的痕迹，具体表现为用POST请求上传了一个1.php脚本，并且发现存在 <code>frpc</code> 或类似内网穿透工具的二进制文件上传。</p>
 <p>过滤器：<code>http contains &quot;1.php&quot;</code></p>
 <p>逐一追踪http</p>
-<p>![](<a target="_blank" rel="noopener" href="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://gitee.com/yaoqingdewaner/imgs/raw/master/img/屏幕截图</a> 2026-02-18 204331.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/fgidkrtg.png"></p>
 <p>发现长度适合的可疑的16进制数据</p>
-<p>![](<a target="_blank" rel="noopener" href="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://gitee.com/yaoqingdewaner/imgs/raw/master/img/屏幕截图</a> 2026-02-18 204407.png)</p>
-<p>![](<a target="_blank" rel="noopener" href="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://gitee.com/yaoqingdewaner/imgs/raw/master/img/屏幕截图</a> 2026-02-18 202540.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/4556rrfff.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/fghrss.png"></p>
 <p><strong>flag：</strong><code>NSSCTF{192.168.239.123}</code></p>
 <h2 id="问7"><a href="#问7" class="headerlink" title="问7"></a>问7</h2><p>题目描述：</p>
 <p>单位网站被黑客挂马，请您从流量中分析出webshell，进行回答：<strong>黑客的socks5的连接账号、密码是________。</strong>（中间使用#号隔开，例如admin#passwd）。得到的flag请使用NSSCTF{}格式提交。</p>
 <p>答案就在上一题那里</p>
-<p>![](<a target="_blank" rel="noopener" href="https://gitee.com/yaoqingdewaner/imgs/raw/master/img/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE">https://gitee.com/yaoqingdewaner/imgs/raw/master/img/屏幕截图</a> 2026-02-18 205449.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/resbbb.png"></p>
 <p><strong>flag:</strong><code>NSSCTF{0HDFt16cLQJ#JTN276Gp}</code></p>
 
                 
@@ -1068,7 +1068,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">20.9k</span>&nbsp;字
+                class="white-color">20.7k</span>&nbsp;字
             
             
             
