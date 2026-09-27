@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 博客">
+    <meta name="keywords" content="MQTT协议杂记, 博客">
     <meta name="description" content="追求不凡，永不止步">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | cyh_blog</title>
+    <title>MQTT协议杂记 | cyh_blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">MQTT协议杂记</h1>
                 </div>
             </div>
         </div>
@@ -335,9 +335,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">笔记</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -349,7 +353,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-12-30
+                    2026-09-27
                 </div>
                 
 
@@ -363,14 +367,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    75
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    5 分
                 </div>
                 
 
@@ -395,19 +399,74 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <p>好不容易蹬了好久AI挖到一个漏洞，结果是重复的。只不过在这过程中学到了一点新东西，就想记下来。</p>
+<h2 id="MQTT介绍"><a href="#MQTT介绍" class="headerlink" title="MQTT介绍"></a>MQTT介绍</h2><p>MQTT（Message Queuing Telemetry Transport，消息队列遥测传输协议），是一种基于发布&#x2F;订阅（publish&#x2F;subscribe）模式的”轻量级”通讯协议，该协议构建于TCP&#x2F;IP协议上。MQTT最大优点在于，可以以极少的代码和有限的带宽，为连接远程设备提供实时可靠的消息服务。作为一种低开销、低带宽占用的即时通讯协议，使其在物联网、小型设备、移动应用等方面有较广泛的应用。</p>
+<h3 id="MQTT协议实现方式"><a href="#MQTT协议实现方式" class="headerlink" title="MQTT协议实现方式"></a>MQTT协议实现方式</h3><p>实现MQTT协议需要客户端和服务器端通讯完成，在通讯过程中，MQTT协议中有三种身份：发布者（Publish）、代理（Broker）（服务器）、订阅者（Subscribe）。其中，消息的发布者和订阅者都是客户端，消息代理是服务器，消息发布者可以同时是订阅者。</p>
+<p>MQTT传输的消息分为：主题（Topic）和负载（payload）两部分：</p>
+<ul>
+<li>（1）Topic，可以理解为消息的类型，订阅者订阅（Subscribe）后，就会收到该主题的消息内容（payload）；</li>
+<li>（2）payload，可以理解为消息的内容，是指订阅者具体要使用的内容。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/52997123b559312d3eb5dcb9bcf57cb8.png"></p>
+<h3 id="网络传输与应用消息"><a href="#网络传输与应用消息" class="headerlink" title="网络传输与应用消息"></a>网络传输与应用消息</h3><p>MQTT会构建底层网络传输：它将建立客户端到服务器的连接，提供两者之间的一个有序的、无损的、基于字节流的双向传输。</p>
+<p>当应用数据通过MQTT网络发送时，MQTT会把与之相关的服务质量（QoS）和主题名（Topic）相关连。</p>
+<h3 id="MQTT客户端"><a href="#MQTT客户端" class="headerlink" title="MQTT客户端"></a>MQTT客户端</h3><p>一个使用MQTT协议的应用程序或者设备，它总是建立到服务器的网络连接。客户端可以：</p>
+<ul>
+<li>（1）发布其他客户端可能会订阅的信息；</li>
+<li>（2）订阅其它客户端发布的消息；</li>
+<li>（3）退订或删除应用程序的消息；</li>
+<li>（4）断开与服务器连接。</li>
+</ul>
+<h3 id="MQTT服务器"><a href="#MQTT服务器" class="headerlink" title="MQTT服务器"></a>MQTT服务器</h3><p>MQTT服务器以称为”消息代理”（Broker），可以是一个应用程序或一台设备。它是位于消息发布者和订阅者之间，它可以：</p>
+<ul>
+<li>（1）接受来自客户的网络连接；</li>
+<li>（2）接受客户发布的应用信息；</li>
+<li>（3）处理来自客户端的订阅和退订请求；</li>
+<li>（4）向订阅的客户转发应用程序消息。</li>
+</ul>
+<h3 id="MQTT协议中的订阅、主题、会话"><a href="#MQTT协议中的订阅、主题、会话" class="headerlink" title="MQTT协议中的订阅、主题、会话"></a>MQTT协议中的订阅、主题、会话</h3><p><strong>一、订阅（Subscription）</strong></p>
+<p>订阅包含主题筛选器（Topic Filter）和最大服务质量（QoS）。订阅会与一个会话（Session）关联。一个会话可以包含多个订阅。每一个会话中的每个订阅都有一个不同的主题筛选器。</p>
+<p><strong>二、会话（Session）</strong></p>
+<p>每个客户端与服务器建立连接后就是一个会话，客户端和服务器之间有状态交互。会话存在于一个网络之间，也可能在客户端和服务器之间跨越多个连续的网络连接。</p>
+<p><strong>三、主题名（Topic Name）</strong></p>
+<p>连接到一个应用程序消息的标签，该标签与服务器的订阅相匹配。服务器会将消息发送给订阅所匹配标签的每个客户端。</p>
+<p><strong>四、主题筛选器（Topic Filter）</strong></p>
+<p>一个对主题名通配符筛选器，在订阅表达式中使用，表示订阅所匹配到的多个主题。</p>
+<p><strong>五、负载（Payload）</strong></p>
+<p>消息订阅者所具体接收的内容。</p>
+<h3 id="MQTT协议中的方法"><a href="#MQTT协议中的方法" class="headerlink" title="MQTT协议中的方法"></a>MQTT协议中的方法</h3><p>MQTT协议中定义了一些方法（也被称为动作），来于表示对确定资源所进行操作。这个资源可以代表预先存在的数据或动态生成数据，这取决于服务器的实现。通常来说，资源指服务器上的文件或输出。主要方法有：</p>
+<ul>
+<li>（1）Connect。等待与服务器建立连接。</li>
+<li>（2）Disconnect。等待MQTT客户端完成所做的工作，并与服务器断开TCP&#x2F;IP会话。</li>
+<li>（3）Subscribe。等待完成订阅。</li>
+<li>（4）UnSubscribe。等待服务器取消客户端的一个或多个topics订阅。</li>
+<li>（5）Publish。MQTT客户端发送消息请求，发送完成后返回应用程序线程。</li>
+</ul>
+<h2 id="MQTT协议数据包结构"><a href="#MQTT协议数据包结构" class="headerlink" title="MQTT协议数据包结构"></a>MQTT协议数据包结构</h2><p>在MQTT协议中，一个MQTT数据包由：固定头（Fixed header）、可变头（Variable header）、消息体（payload）三部分构成。MQTT数据包结构如下：</p>
+<ul>
+<li>（1）固定头（Fixed header）。存在于所有MQTT数据包中，表示数据包类型及数据包的分组类标识。</li>
+<li>（2）可变头（Variable header）。存在于部分MQTT数据包中，数据包类型决定了可变头是否存在及其具体内容。</li>
+<li>（3）消息体（Payload）。存在于部分MQTT数据包中，表示客户端收到的具体内容。</li>
+</ul>
+<p>更多详细<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_28877125/article/details/78325003">MQTT协议详解-CSDN博客</a></p>
+<h2 id="安全方面"><a href="#安全方面" class="headerlink" title="安全方面"></a>安全方面</h2><p>MQTT 协议本身的设计侧重于轻量高效，<strong>安全机制并非强制内置，导致默认配置下存在一系列原生隐患</strong>。其核心风险集中在以下几个方面：</p>
+<h3 id="传输与隐私风险"><a href="#传输与隐私风险" class="headerlink" title="传输与隐私风险"></a>传输与隐私风险</h3><ul>
+<li><strong>明文传输</strong>：默认不加密，凭据和负载在网络上以明文形式传输，极易被嗅探工具截获。</li>
+<li><strong>中间人攻击</strong>：攻击者可拦截并篡改数据（如伪造传感器温度），或窃取登录凭据。</li>
+</ul>
+<h3 id="认证与授权缺陷"><a href="#认证与授权缺陷" class="headerlink" title="认证与授权缺陷"></a>认证与授权缺陷</h3><ul>
+<li><strong>弱认证甚至无认证</strong>：部分 Broker 允许匿名连接或使用弱口令，攻击者可轻易接管消息系统。</li>
+<li><strong>缺乏细粒度授权</strong>：协议本身不强制限制订阅&#x2F;发布权限，一旦连接成功，可能越权访问敏感主题。</li>
+</ul>
+<h3 id="可用性攻击"><a href="#可用性攻击" class="headerlink" title="可用性攻击"></a>可用性攻击</h3><ul>
+<li><strong>拒绝服务攻击</strong>：通过海量连接或超大负载耗尽 Broker 资源，导致服务瘫痪。</li>
+<li><strong>共享订阅饥饿攻击</strong>：MQTT 5.0 的共享订阅特性若被滥用，可恶意垄断消息，导致合法订阅者收不到数据。</li>
+</ul>
+<h3 id="其他特定隐患"><a href="#其他特定隐患" class="headerlink" title="其他特定隐患"></a>其他特定隐患</h3><ul>
+<li><strong>主题注入</strong>：主题名缺乏强制校验，攻击者可能构造恶意主题名实施注入。</li>
+<li><strong>实现漏洞</strong>：如 CVE-2019-11778 等特定实现缺陷可导致 Broker 崩溃。<a target="_blank" rel="noopener" href="https://dl.acm.org/doi/fullHtml/10.1145/3697090.3699800#1">MQTT-VET：探索 MQTT 协议的漏洞 — MQTT-VET: Exploring MQTT Protocol Vulnerabilities</a></li>
+</ul>
+<p><strong>简单来说</strong>，MQTT 的安全依赖于是否正确开启了 TLS 加密、强认证和 ACL 权限控制。裸跑 MQTT 相当于在公共网络上“裸奔”。</p>
 
                 
             </div>
@@ -434,7 +493,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://cyh-32.github.io/2025/12/30/hello-world/">http://cyh-32.github.io/2025/12/30/hello-world/</a>
+                    <a href="http://cyh-32.github.io/2026/09/27/mqtt-xie-yi-za-ji/">http://cyh-32.github.io/2026/09/27/mqtt-xie-yi-za-ji/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -471,7 +530,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">笔记</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -639,54 +702,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2025/12/30/first-blog/">
+                <a href="/2026/09/27/mqtt-xie-yi-za-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="first blog">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="MQTT协议杂记">
                         
-                        <span class="card-title">first blog</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-12-30
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            持之以 恒
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2025/12/30/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">MQTT协议杂记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -697,7 +724,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-12-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-09-27
                             </span>
                         <span class="publish-author">
                             
@@ -708,6 +735,59 @@
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2026/03/31/steganography-writeup/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Steganography Writeup">
+                        
+                        <span class="card-title">Steganography Writeup</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-31
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            持之以 恒
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CTF-MISC/">
+                        <span class="chip bg-color">CTF_MISC</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
