@@ -671,7 +671,11 @@
 <h3 id="运行结果-2"><a href="#运行结果-2" class="headerlink" title="运行结果"></a>运行结果</h3><p>运行上述脚本，输出：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[+] Recovered 6 states</span><br><span class="line">[+] Recovered m: 9114611192019957857</span><br><span class="line">[+] Recovered a: 2371820993816156899</span><br><span class="line">[+] Recovered c: 2725942441002268621</span><br><span class="line">[+] Flag: b<span class="string">&#x27;SHCTF&#123;LLLLLLLLLLLLLLLCCCCCGGGGGGGGG_TGY%JgWOmAM6V5n55w3m*jcPJZjHO8E1VvzrGjT84tXS332D&amp;o4GZe8%KKzEyAngmwwx9bp5dv_O4dPpOvMy1^hM&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>Flag:</strong><br><code>SHCTF{LLLLLLLLLLLLLLLCCCCCGGGGGGGGG_TGY%JgWOmAM6V5n55w3m*jcPJZjHO8E1VvzrGjT84tXS332D&amp;o4GZe8%KKzEyAngmwwx9bp5dv_O4dPpOvMy1^hM}</code></p>
+<p><strong>Flag:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHCTF&#123;LLLLLLLLLLLLLLLCCCCCGGGGGGGGG_TGY%JgWOmAM6V5n55w3m*jcPJZjHO8E1VvzrGjT84tXS332D&amp;o4GZe8%KKzEyAngmwwx9bp5dv_O4dPpOvMy1^hM&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="evan"><a href="#evan" class="headerlink" title="evan"></a>evan</h2><p>题目给了一张png图片，用binwalk扫了一下发现有个zip文件。<br><img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/fdgsthhh.png"><br>然后再用foremost提取了zip文件，发现需要密码。<br>在010editor里打开zip文件，发现有个文件叫flag.txt，猜测密码可能在这个文件里。<br>并且发现zip文件是伪加密的，数据区：504b030414000600，目录区：504b0102140014000900。<br><img src="https://cdn.jsdelivr.net/gh/cyh-32/img-bed@main/img/69907921aae0f_1771075873.webp"><br>所以可以直接把数据区和目录区的加密标志去掉，改成正常的zip文件。<br>修改后就可以直接解压了，flag.txt的内容就是flag。<br><em>flag:</em> <code>SHCTF{Evan_1s_s0_h4nds0me!}</code></p>
 <h2 id="not-eight-length"><a href="#not-eight-length" class="headerlink" title="not_eight_length"></a>not_eight_length</h2><h3 id="题目分析-1"><a href="#题目分析-1" class="headerlink" title="题目分析"></a>题目分析</h3><p>题目提供了一个 Python 脚本 <code>task.py</code> 以及输出的参数 n, e, c。</p>
 <h4 id="1-加密逻辑分析"><a href="#1-加密逻辑分析" class="headerlink" title="1. 加密逻辑分析"></a>1. 加密逻辑分析</h4><p>查看 <code>task.py</code> 中的关键代码：</p>
