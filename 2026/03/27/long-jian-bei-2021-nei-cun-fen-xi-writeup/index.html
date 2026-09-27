@@ -335,14 +335,16 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
+                        <div class="article-tag">
+                            
+                                <a href="/tags/CTF-MISC/">
+                                    <span class="chip bg-color">
+                                        CTF_MISC
+                                    </span>
+                                </a>
+                                
+                        </div>
                         
-                            <a href="/tags/CTF-MISC/">
-                                <span class="chip bg-color">CTF_MISC</span>
-                            </a>
-                        
-                    </div>
-                    
                 </div>
                 <div class="col s5 right-align">
                     
@@ -351,58 +353,141 @@
 
             <div class="post-info">
                 
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2026-03-27
-                </div>
-                
-
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-09-27
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    697
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
-                </div>
-                
-
-                
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
+                    <div class="post-date info-break-policy">
+                        <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                            2026-03-27
                     </div>
-				
+                    
+
+                        
+                            <div class="post-date info-break-policy">
+                                <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                                    2026-09-27
+                            </div>
+                            
+
+                                
+                                    <div class="info-break-policy">
+                                        <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                                            697
+                                    </div>
+                                    
+
+                                        
+                                            <div class="info-break-policy">
+                                                <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                                                    2
+                                                        分
+                                            </div>
+                                            
+
+                                                
+                                                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                                                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                                                            <span id="busuanzi_value_page_pv"></span>
+                                                    </div>
+                                                    
             </div>
         </div>
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
+            <!-- 是否加载使用自带的 prismjs. -->
+            <link rel="stylesheet" href="/libs/prism/prism.css">
+            
 
-        
-        <!-- 代码块折行 -->
-        <style type="text/css">
-            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
-        </style>
-        
+                
+                    <!-- 代码块折行 -->
+                    <style type="text/css">
+                        /* 兼容两种渲染结果：
+               1) highlight.js：figure.highlight > table > td.code > pre（pre 上没有 class，语言类名在 figure 上）
+               2) prismjs：pre.language-xxx */
+                        .highlight td.code pre,
+                        .highlight pre,
+                        .code-area pre,
+                        code[class*="language-"],
+                        pre[class*="language-"] {
+                            white-space: pre-wrap !important;
+                            /* 仅有 pre-wrap 无法断开没有空格的长串（如超长数字/密文/URL），必须允许任意位置断行 */
+                            word-break: break-all !important;
+                            overflow-wrap: anywhere;
+                        }
 
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <p>也不知道要写啥，干脆就写一些印象比较深刻的题目的wp吧</p>
+                        /* 让代码单元格参与收缩，表格宽度跟随内容区，避免被超长行撑开 */
+                        .highlight table {
+                            width: 100% !important;
+                        }
+
+                        .highlight td.code {
+                            width: 100% !important;
+                        }
+
+                        /* ===== 折行后的行号对齐 =====
+                           一个逻辑行折行后会占多个视觉行，而 Hexo 把行号单独放在 td.gutter 里，
+                           1 个行号对应 1 个逻辑行，折行后必然错位。
+                           这里隐藏 gutter，改用 CSS 计数器把行号画在每个 .line 块内部，
+                           并用「悬挂缩进」让折行出来的内容与代码起始位置对齐。 */
+                        .highlight td.gutter {
+                            display: none !important;
+                        }
+
+                        .highlight td.code pre {
+                            counter-reset: codeline;
+                        }
+
+                        /* .line 变成块级后，原来的 <br> 会多出空行，需要隐藏 */
+                        .highlight td.code pre>br {
+                            display: none !important;
+                        }
+
+                        .highlight td.code pre>.line {
+                            display: block !important;
+                            counter-increment: codeline;
+                            /* 与下面 ::before 的总宽度保持一致（3.2em + 0.8em） */
+                            padding-left: 4em;
+                            /* 悬挂缩进：首行左移到 padding 区，折行后的内容与代码对齐 */
+                            text-indent: -4em;
+                        }
+
+                        .highlight td.code pre>.line::before {
+                            content: counter(codeline);
+                            display: inline-block;
+                            box-sizing: border-box;
+                            width: 3.2em;
+                            margin-right: .8em;
+                            padding-right: .5em;
+                            text-align: right;
+                            color: #8a9199;
+                            border-right: 1px solid rgba(136, 136, 136, .45);
+                            -webkit-user-select: none;
+                            user-select: none;
+                        }
+
+                        /* 空行也要保持一行的高度 */
+                        .highlight td.code pre>.line:empty::after {
+                            content: "\200b";
+                        }
+                    </style>
+                    
+
+                        
+                            <!-- 代码块折叠 -->
+                            <style type="text/css">
+                                /* 点击右上角箭头折叠 / 展开代码块。
+                           折叠时只限制高度并做渐隐（保留顶部的三个圆点和按钮，避免整块消失），
+                           用 mask 渐隐而不是渐变遮罩，深色或浅色代码背景都适用。 */
+                                .code-area.code-closed pre {
+                                    max-height: 10rem !important;
+                                    overflow: hidden !important;
+                                    -webkit-mask-image: linear-gradient(#000 55%, transparent);
+                                    mask-image: linear-gradient(#000 55%, transparent);
+                                }
+                            </style>
+                            
+
+                                <div class="card-content article-card-content">
+                                    <div id="articleContent">
+                                        <p>也不知道要写啥，干脆就写一些印象比较深刻的题目的wp吧</p>
 <h2 id="题目信息"><a href="#题目信息" class="headerlink" title="题目信息"></a>题目信息</h2><ul>
 <li>题型：MISC &#x2F; 内存取证</li>
 <li>附件：<code>Target.vmem</code> <code>tips.txt</code></li>
@@ -457,11 +542,11 @@
 <li>在解密后的 <code>storage/MediaTar/images/Pictures/flag/</code> 下获取 flag 图片</li>
 </ol>
 
-                
-            </div>
-            <hr/>
+                                            
+                                    </div>
+                                    <hr />
 
-            
+                                    
 
     <div class="reprint" id="reprint-statement">
         
@@ -515,20 +600,23 @@
 
 
 
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/CTF-MISC/">
-                                    <span class="chip bg-color">CTF_MISC</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+                                        <div class="tag_share" style="display: block;">
+                                            <div class="post-meta__tag-list" style="display: inline-block;">
+                                                
+                                                    <div class="article-tag">
+                                                        
+                                                            <a href="/tags/CTF-MISC/">
+                                                                <span class="chip bg-color">
+                                                                    CTF_MISC
+                                                                </span>
+                                                            </a>
+                                                            
+                                                    </div>
+                                                    
+                                            </div>
+                                            <div class="post_share"
+                                                style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                                                <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
 <div id="article-share">
 
     
@@ -540,10 +628,10 @@
 
 </div>
 
-                </div>
-            </div>
-            
-                <style>
+                                            </div>
+                                        </div>
+                                        
+                                            <style>
     #reward {
         margin: 40px 0;
         text-align: center;
@@ -668,25 +756,25 @@
     });
 </script>
 
-            
-        </div>
+                                                
+                                </div>
     </div>
 
     
 
-    
+                
 
-    
+                            
 
-    
+                                        
 
-    
+                                                    
 
-    
+                                                                
 
-    
+                                                                            
 
-    
+                                                                                        
 
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
@@ -786,24 +874,27 @@
 
 
 
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+        <!-- 代码块功能依赖 -->
+        <script type="text/javascript"
+            src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-<!-- 代码语言 -->
+        <!-- 代码语言 -->
+        
+            <script type="text/javascript"
+                src="/libs/codeBlock/codeLang.js"></script>
+            
 
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+                <!-- 代码块复制 -->
+                
+                    <script type="text/javascript"
+                        src="/libs/codeBlock/codeCopy.js"></script>
+                    
 
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
+                        <!-- 代码块收缩 -->
+                        
+                            <script type="text/javascript"
+                                src="/libs/codeBlock/codeShrink.js"></script>
+                            
     
 
 </main>

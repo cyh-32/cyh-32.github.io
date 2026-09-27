@@ -1,1 +1,32 @@
 /* Here is your custom css styles. */
+
+/* ===== 代码字体统一 =====
+   matery.css 里有一条全局规则：
+     .post-charts, .title, .my-projects .title, ... { font-size: 2rem; margin-bottom: 2.25rem }
+   而 highlight.js 会给函数名 / 类名生成 <span class="title function_ invoke__">，
+   被 .title 命中后就变成 28px 且多出下边距，于是同一段代码里"有的字大有的字小"。
+   下面把代码块和行内代码的字体、字号、字重、行高、间距全部统一。 */
+pre,
+code,
+kbd,
+samp,
+.code-area pre,
+.highlight pre {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', 'Courier New', monospace !important;
+    font-size: 1em !important;
+    line-height: 1.5 !important;
+}
+
+/* 代码内部的所有元素（含 highlight.js 的 .title / .keyword / .variable 等 span）
+   统一继承上一段的设置，不再受页面其它同名类的影响 */
+pre *,
+code *,
+kbd * {
+    font-family: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    font-style: inherit !important;
+    line-height: inherit !important;
+    letter-spacing: normal !important;
+    margin: 0 !important;
+}
