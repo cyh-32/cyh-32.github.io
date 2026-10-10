@@ -65,8 +65,22 @@ $(function () {
         range.selectNodeContents(target)
         selection.removeAllRanges()
         selection.addRange(range)
-        // 行号是用 CSS 计数器画的伪元素，selection.toString() 里不会包含它们；万一为空则直接用 DOM 文本兜底
-        var text = selection.toString() || $pre.text()
+
+        // 取要复制的文本：
+        // highlight.js 渲染时一行一个 <span class="line">，但行间的 <br> 被 CSS 隐藏了（折行需要），
+        // 这种情况下选区文本会丢掉空行，所以按行拼回原文；行号是 CSS 计数器画的伪元素，不会混进来。
+        // prism / 纯 <pre><code> 的渲染结果则直接取文本内容。
+        var text = ''
+        var $lines = $pre.children('.line')
+        if ($lines.length) {
+            text = $lines.map(function () {
+                return this.textContent
+            }).get().join('\n')
+        } else if ($pre.find('code').length) {
+            text = $pre.find('code').first().text()
+        } else {
+            text = $pre.text()
+        }
 
         writeClipboard(text, function (ok) {
             showNotice(ctx, ok && text ? "复制成功" : "复制失败")
