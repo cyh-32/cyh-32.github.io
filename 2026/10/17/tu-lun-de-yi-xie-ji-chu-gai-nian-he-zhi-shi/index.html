@@ -717,7 +717,7 @@
 <li>$c$：最后一位，用来决定该节点采用哪一组维度的连接规则。</li>
 </ul>
 <hr>
-<h2 id="connectivity（连通度）"><a href="#connectivity（连通度）" class="headerlink" title="connectivity（连通度）"></a>connectivity（连通度）</h2><p>在图论&#x2F;互连网络里，**connectivity（连通度）**衡量的是：一个网络“最少坏掉多少个点&#x2F;边”就会变得不连通。</p>
+<h2 id="connectivity（连通度）"><a href="#connectivity（连通度）" class="headerlink" title="connectivity（连通度）"></a>connectivity（连通度）</h2><p>在图论&#x2F;互连网络里，*connectivity（连通度）*衡量的是：一个网络“最少坏掉多少个点&#x2F;边”就会变得不连通。</p>
 <p>通常说 connectivity 多指 <strong>vertex connectivity</strong>，记作 <em>κ</em>(<em>G</em>) ：</p>
 <p><em>κ</em>(<em>G</em>) &#x3D; 删除最少的顶点数，使图 <em>G</em> 变得不连通。</p>
 <p>对应到多处理器网络：顶点&#x3D;处理器，边&#x3D;通信链路；<em>κ</em>(<em>G</em>) 就是最少要坏多少个处理器，网络才会被拆成至少两块。边的版本叫 <strong>edge connectivity</strong>，记作 <em>λ</em>(<em>G</em>) ，类似地定义为删除最少边使图断开。</p>
@@ -778,9 +778,9 @@
 <h2 id="必记lemma"><a href="#必记lemma" class="headerlink" title="必记lemma"></a>必记lemma</h2><h3 id="邻域计算"><a href="#邻域计算" class="headerlink" title="邻域计算"></a>邻域计算</h3><p>如果集合 <em>S</em> 里包含一个4-圈（正方形），那么当 <em>S</em> 有5个或6个点时，它的外部邻居数量至少有某个保证值。</p>
 <p>具体：</p>
 <ul>
-<li><p><strong>(1)</strong> ∣<em>S</em>∣&#x3D;5 （4-圈 + 1个额外点）⇒∣<em>N</em>(<em>S</em>)∣≥5<em>n</em>−12</p>
+<li><p><em>(1)</em> ∣<em>S</em>∣&#x3D;5 （4-圈 + 1个额外点）⇒∣<em>N</em>(<em>S</em>)∣≥5<em>n</em>−12</p>
 </li>
-<li><p><strong>(2)</strong> ∣<em>S</em>∣&#x3D;6 （4-圈 + 2个额外点）⇒∣<em>N</em>(<em>S</em>)∣≥6<em>n</em>−17</p>
+<li><p><em>(2)</em> ∣<em>S</em>∣&#x3D;6 （4-圈 + 2个额外点）⇒∣<em>N</em>(<em>S</em>)∣≥6<em>n</em>−17</p>
 </li>
 </ul>
 <h3 id="可区分性判据"><a href="#可区分性判据" class="headerlink" title="可区分性判据"></a>可区分性判据</h3><ul>
@@ -790,9 +790,9 @@
 </li>
 </ul>
 <h3 id="超立方体性质"><a href="#超立方体性质" class="headerlink" title="超立方体性质"></a>超立方体性质</h3><ul>
-<li><p><strong>(1)</strong> 任意两点最多 2 个公共邻居（cn ≤2 ）</p>
+<li><p><em>(1)</em> 任意两点最多 2 个公共邻居（cn ≤2 ）</p>
 </li>
-<li><p><strong>(2)</strong> 删除 ≤5<em>n</em>−10 个点后，只剩一个大分支 + 总点数 ≤5 的小碎片</p>
+<li><p><em>(2)</em> 删除 ≤5<em>n</em>−10 个点后，只剩一个大分支 + 总点数 ≤5 的小碎片</p>
 </li>
 </ul>
 <p>在超立方体 $Q_{m}$ 中，一个顶点如果和 4-环中的一个顶点相邻，它必定和 4-环中的<strong>两个顶点</strong>相邻（这是一个超立方体的几何性质）。</p>
