@@ -663,40 +663,52 @@
 <li><p>它是高度对称、规则、可扩展的互连拓扑。</p>
 </li>
 </ul>
-<h2 id="交叉立方体-Crossed-Cubes"><a href="#交叉立方体-Crossed-Cubes" class="headerlink" title="交叉立方体 Crossed Cubes"></a>交叉立方体 Crossed Cubes</h2><p>Crossed Cubes（交叉立方体，通常记作 CQ_n 是一种多处理器互连网络拓扑。 它可以看作普通超立方体（Hypercube）的一种改进：通过调整节点之间的连接方式，让网络在保持较好的通信性能的同时，具有一些更有利的结构性质。</p>
+<h2 id="交叉立方体-Crossed-Cubes"><a href="#交叉立方体-Crossed-Cubes" class="headerlink" title="交叉立方体 Crossed Cubes"></a>交叉立方体 Crossed Cubes</h2><p>Crossed Cubes（交叉立方体，通常记作 $CQ_{n}$ 是一种多处理器互连网络拓扑。 它可以看作普通超立方体（Hypercube）的一种改进：通过调整节点之间的连接方式，让网络在保持较好的通信性能的同时，具有一些更有利的结构性质。</p>
 <table>
 <thead>
 <tr>
-<th><strong>性质</strong></th>
-<th><strong>结果</strong></th>
-<th><strong>通俗解释</strong></th>
+<th align="center"><strong>性质</strong></th>
+<th align="center"><strong>结果</strong></th>
+<th align="center"><strong>通俗解释</strong></th>
 </tr>
 </thead>
 <tbody><tr>
-<td>节点数</td>
-<td>$2^n$</td>
-<td>每个节点对应一个 n 位二进制串</td>
+<td align="center">节点数</td>
+<td align="center">$2^n$</td>
+<td align="center">每个节点对应一个 n 位二进制串</td>
 </tr>
 <tr>
-<td>节点度</td>
-<td>n</td>
-<td>每个节点恰好连接 n 个邻居</td>
+<td align="center">节点度</td>
+<td align="center">n</td>
+<td align="center">每个节点恰好连接 n 个邻居</td>
 </tr>
 <tr>
-<td>连通度</td>
-<td>n</td>
-<td>至少删除 n 个节点，才可能使网络断开</td>
+<td align="center">连通度</td>
+<td align="center">n</td>
+<td align="center">至少删除 n 个节点，才可能使网络断开</td>
 </tr>
 <tr>
-<td>三角形</td>
-<td>不含三角形</td>
-<td>网络中不存在由 3 个节点组成的环</td>
+<td align="center">三角形</td>
+<td align="center">不含三角形</td>
+<td align="center">网络中不存在由 3 个节点组成的环</td>
 </tr>
 </tbody></table>
-<p>对比项 普通超立方体 Q_n 交叉立方体 CQ_n</p>
-<p>节点连接规则 两个二进制串恰好有一位不同 使用交叉立方体特有的配对规则</p>
+<table>
+<thead>
+<tr>
+<th align="center">对比项</th>
+<th align="center">普通超立方体 $Q_{n}$</th>
+<th align="center">交叉立方体 $CQ_{n}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">节点连接规则</td>
+<td align="center">两个二进制串恰好有一位不同</td>
+<td align="center">使用交叉立方体特有的配对规则</td>
+</tr>
+</tbody></table>
 <h2 id="扭曲超立方体-Twisted-Hypercubes"><a href="#扭曲超立方体-Twisted-Hypercubes" class="headerlink" title="扭曲超立方体 Twisted Hypercubes"></a>扭曲超立方体 Twisted Hypercubes</h2><p>Twisted Hypercube（扭曲超立方体）是一类对普通超立方体进行连接方式改造的多处理器互连网络。 它的核心思想是：保留超立方体的基本框架，但改变某些维度上的节点连接规则，从而获得不同的网络结构和通信性质。</p>
-<h2 id="交换超立方体-Exchanged-Hypercubes"><a href="#交换超立方体-Exchanged-Hypercubes" class="headerlink" title="交换超立方体 Exchanged Hypercubes"></a>交换超立方体 Exchanged Hypercubes</h2><p>在多处理器网络研究中，常见的交换超立方体记作 EH(s,t)</p>
+<h2 id="交换超立方体-Exchanged-Hypercubes"><a href="#交换超立方体-Exchanged-Hypercubes" class="headerlink" title="交换超立方体 Exchanged Hypercubes"></a>交换超立方体 Exchanged Hypercubes</h2><p>在多处理器网络研究中，常见的交换超立方体记作 $EH(s,t)$</p>
 <p>其中 (s,t) 是两个正整数，分别控制网络中两组不同的超立方体结构。经典定义将它看作普通二进制超立方体的一种删边变体：保留所有节点，但有选择地删除部分连接，以降低互连复杂度。</p>
 <p>每个节点可以写成一个长度为 s+t+1 的二进制串：<br>$$<br>u&#x3D;a_{s} \cdot \cdot \cdot a_{1}b_{t} \cdot \cdot \cdot b_{1}c<br>$$<br>这里：</p>
 <ul>
